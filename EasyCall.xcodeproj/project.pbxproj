@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5CB3F1F321F8784200CAA7F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F221F8784200CAA7F4 /* AppDelegate.swift */; };
+		5CB3F1F521F8784200CAA7F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F421F8784200CAA7F4 /* ViewController.swift */; };
+		5CB3F1F821F8784200CAA7F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F621F8784200CAA7F4 /* Main.storyboard */; };
+		5CB3F1FB21F8784200CAA7F4 /* EasyCall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F921F8784200CAA7F4 /* EasyCall.xcdatamodeld */; };
+		5CB3F1FD21F8784300CAA7F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1FC21F8784300CAA7F4 /* Assets.xcassets */; };
+		5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */; };
+		5CB3F20B21F8784300CAA7F4 /* EasyCallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CB3F20721F8784300CAA7F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CB3F1E721F8784200CAA7F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CB3F1EE21F8784200CAA7F4;
+			remoteInfo = EasyCall;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5CB3F1EF21F8784200CAA7F4 /* EasyCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CB3F1F221F8784200CAA7F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5CB3F1F421F8784200CAA7F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5CB3F1F721F8784200CAA7F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5CB3F1FA21F8784200CAA7F4 /* EasyCall.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyCall.xcdatamodel; sourceTree = "<group>"; };
+		5CB3F1FC21F8784300CAA7F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5CB3F1FF21F8784300CAA7F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5CB3F20121F8784300CAA7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CB3F20621F8784300CAA7F4 /* EasyCallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyCallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyCallTests.swift; sourceTree = "<group>"; };
+		5CB3F20C21F8784300CAA7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5CB3F1EC21F8784200CAA7F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CB3F20321F8784300CAA7F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5CB3F1E621F8784200CAA7F4 = {
+			isa = PBXGroup;
+			children = (
+				5CB3F1F121F8784200CAA7F4 /* EasyCall */,
+				5CB3F20921F8784300CAA7F4 /* EasyCallTests */,
+				5CB3F1F021F8784200CAA7F4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5CB3F1F021F8784200CAA7F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5CB3F1EF21F8784200CAA7F4 /* EasyCall.app */,
+				5CB3F20621F8784300CAA7F4 /* EasyCallTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5CB3F1F121F8784200CAA7F4 /* EasyCall */ = {
+			isa = PBXGroup;
+			children = (
+				5CB3F1F221F8784200CAA7F4 /* AppDelegate.swift */,
+				5CB3F1F421F8784200CAA7F4 /* ViewController.swift */,
+				5CB3F1F621F8784200CAA7F4 /* Main.storyboard */,
+				5CB3F1FC21F8784300CAA7F4 /* Assets.xcassets */,
+				5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */,
+				5CB3F20121F8784300CAA7F4 /* Info.plist */,
+				5CB3F1F921F8784200CAA7F4 /* EasyCall.xcdatamodeld */,
+			);
+			path = EasyCall;
+			sourceTree = "<group>";
+		};
+		5CB3F20921F8784300CAA7F4 /* EasyCallTests */ = {
+			isa = PBXGroup;
+			children = (
+				5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */,
+				5CB3F20C21F8784300CAA7F4 /* Info.plist */,
+			);
+			path = EasyCallTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5CB3F1EE21F8784200CAA7F4 /* EasyCall */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CB3F20F21F8784300CAA7F4 /* Build configuration list for PBXNativeTarget "EasyCall" */;
+			buildPhases = (
+				5CB3F1EB21F8784200CAA7F4 /* Sources */,
+				5CB3F1EC21F8784200CAA7F4 /* Frameworks */,
+				5CB3F1ED21F8784200CAA7F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyCall;
+			productName = EasyCall;
+			productReference = 5CB3F1EF21F8784200CAA7F4 /* EasyCall.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5CB3F20521F8784300CAA7F4 /* EasyCallTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CB3F21221F8784300CAA7F4 /* Build configuration list for PBXNativeTarget "EasyCallTests" */;
+			buildPhases = (
+				5CB3F20221F8784300CAA7F4 /* Sources */,
+				5CB3F20321F8784300CAA7F4 /* Frameworks */,
+				5CB3F20421F8784300CAA7F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CB3F20821F8784300CAA7F4 /* PBXTargetDependency */,
+			);
+			name = EasyCallTests;
+			productName = EasyCallTests;
+			productReference = 5CB3F20621F8784300CAA7F4 /* EasyCallTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5CB3F1E721F8784200CAA7F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = mojito;
+				TargetAttributes = {
+					5CB3F1EE21F8784200CAA7F4 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					5CB3F20521F8784300CAA7F4 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 5CB3F1EE21F8784200CAA7F4;
+					};
+				};
+			};
+			buildConfigurationList = 5CB3F1EA21F8784200CAA7F4 /* Build configuration list for PBXProject "EasyCall" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5CB3F1E621F8784200CAA7F4;
+			productRefGroup = 5CB3F1F021F8784200CAA7F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CB3F1EE21F8784200CAA7F4 /* EasyCall */,
+				5CB3F20521F8784300CAA7F4 /* EasyCallTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5CB3F1ED21F8784200CAA7F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */,
+				5CB3F1FD21F8784300CAA7F4 /* Assets.xcassets in Resources */,
+				5CB3F1F821F8784200CAA7F4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CB3F20421F8784300CAA7F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5CB3F1EB21F8784200CAA7F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CB3F1FB21F8784200CAA7F4 /* EasyCall.xcdatamodeld in Sources */,
+				5CB3F1F521F8784200CAA7F4 /* ViewController.swift in Sources */,
+				5CB3F1F321F8784200CAA7F4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CB3F20221F8784300CAA7F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CB3F20B21F8784300CAA7F4 /* EasyCallTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CB3F20821F8784300CAA7F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CB3F1EE21F8784200CAA7F4 /* EasyCall */;
+			targetProxy = 5CB3F20721F8784300CAA7F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5CB3F1F621F8784200CAA7F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CB3F1F721F8784200CAA7F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CB3F1FF21F8784300CAA7F4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5CB3F20D21F8784300CAA7F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5CB3F20E21F8784300CAA7F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5CB3F21021F8784300CAA7F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EasyCall/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.mobile.mojito.EasyCall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5CB3F21121F8784300CAA7F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EasyCall/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.mobile.mojito.EasyCall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5CB3F21321F8784300CAA7F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EasyCallTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.mobile.mojito.EasyCallTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyCall.app/EasyCall";
+			};
+			name = Debug;
+		};
+		5CB3F21421F8784300CAA7F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EasyCallTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.mobile.mojito.EasyCallTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyCall.app/EasyCall";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5CB3F1EA21F8784200CAA7F4 /* Build configuration list for PBXProject "EasyCall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CB3F20D21F8784300CAA7F4 /* Debug */,
+				5CB3F20E21F8784300CAA7F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CB3F20F21F8784300CAA7F4 /* Build configuration list for PBXNativeTarget "EasyCall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CB3F21021F8784300CAA7F4 /* Debug */,
+				5CB3F21121F8784300CAA7F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CB3F21221F8784300CAA7F4 /* Build configuration list for PBXNativeTarget "EasyCallTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CB3F21321F8784300CAA7F4 /* Debug */,
+				5CB3F21421F8784300CAA7F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5CB3F1F921F8784200CAA7F4 /* EasyCall.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5CB3F1FA21F8784200CAA7F4 /* EasyCall.xcdatamodel */,
+			);
+			currentVersion = 5CB3F1FA21F8784200CAA7F4 /* EasyCall.xcdatamodel */;
+			path = EasyCall.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5CB3F1E721F8784200CAA7F4 /* Project object */;
+}
