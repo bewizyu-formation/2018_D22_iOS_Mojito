@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C7949F421F8B0950042263B /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7949F321F8B0950042263B /* LoginNavigationController.swift */; };
+		5C794A0421F8B3090042263B /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C794A0221F8B3090042263B /* ContactsTableViewController.swift */; };
+		5C794A0521F8B3090042263B /* ContactsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C794A0321F8B3090042263B /* ContactsTableViewController.xib */; };
+		5C794A1421F8C1100042263B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C794A1221F8C1100042263B /* LoginViewController.swift */; };
+		5C794A1521F8C1100042263B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C794A1321F8C1100042263B /* LoginViewController.xib */; };
+		5CB152B421F8AE5C002FDD4F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB152B321F8AE5C002FDD4F /* MainViewController.swift */; };
+		5CB152B621F8AFA8002FDD4F /* ContactsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB152B521F8AFA8002FDD4F /* ContactsNavigationController.swift */; };
 		5CB3F1F321F8784200CAA7F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F221F8784200CAA7F4 /* AppDelegate.swift */; };
-		5CB3F1F521F8784200CAA7F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F421F8784200CAA7F4 /* ViewController.swift */; };
 		5CB3F1F821F8784200CAA7F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F621F8784200CAA7F4 /* Main.storyboard */; };
 		5CB3F1FB21F8784200CAA7F4 /* EasyCall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F921F8784200CAA7F4 /* EasyCall.xcdatamodeld */; };
 		5CB3F1FD21F8784300CAA7F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1FC21F8784300CAA7F4 /* Assets.xcassets */; };
 		5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */; };
 		5CB3F20B21F8784300CAA7F4 /* EasyCallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */; };
+		5CB3F23D21F881FC00CAA7F4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,9 +34,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C7949F321F8B0950042263B /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
+		5C794A0221F8B3090042263B /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsTableViewController.swift; path = ../ContactsTableViewController.swift; sourceTree = "<group>"; };
+		5C794A0321F8B3090042263B /* ContactsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewController.xib; sourceTree = "<group>"; };
+		5C794A1221F8C1100042263B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../../LoginViewController.swift; sourceTree = "<group>"; };
+		5C794A1321F8C1100042263B /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		5CB152B321F8AE5C002FDD4F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		5CB152B521F8AFA8002FDD4F /* ContactsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsNavigationController.swift; sourceTree = "<group>"; };
 		5CB3F1EF21F8784200CAA7F4 /* EasyCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB3F1F221F8784200CAA7F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5CB3F1F421F8784200CAA7F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5CB3F1F721F8784200CAA7F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CB3F1FA21F8784200CAA7F4 /* EasyCall.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyCall.xcdatamodel; sourceTree = "<group>"; };
 		5CB3F1FC21F8784300CAA7F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +51,7 @@
 		5CB3F20621F8784300CAA7F4 /* EasyCallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyCallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyCallTests.swift; sourceTree = "<group>"; };
 		5CB3F20C21F8784300CAA7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C7949F521F8B0E40042263B /* NavigationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C7949F321F8B0950042263B /* LoginNavigationController.swift */,
+				5CB152B521F8AFA8002FDD4F /* ContactsNavigationController.swift */,
+			);
+			path = NavigationControllers;
+			sourceTree = "<group>";
+		};
 		5CB3F1E621F8784200CAA7F4 = {
 			isa = PBXGroup;
 			children = (
@@ -79,11 +102,10 @@
 		5CB3F1F121F8784200CAA7F4 /* EasyCall */ = {
 			isa = PBXGroup;
 			children = (
+				5CB3F21B21F87C9900CAA7F4 /* API */,
+				5CB3F21721F87C3A00CAA7F4 /* UI */,
 				5CB3F1F221F8784200CAA7F4 /* AppDelegate.swift */,
-				5CB3F1F421F8784200CAA7F4 /* ViewController.swift */,
-				5CB3F1F621F8784200CAA7F4 /* Main.storyboard */,
 				5CB3F1FC21F8784300CAA7F4 /* Assets.xcassets */,
-				5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */,
 				5CB3F20121F8784300CAA7F4 /* Info.plist */,
 				5CB3F1F921F8784200CAA7F4 /* EasyCall.xcdatamodeld */,
 			);
@@ -97,6 +119,53 @@
 				5CB3F20C21F8784300CAA7F4 /* Info.plist */,
 			);
 			path = EasyCallTests;
+			sourceTree = "<group>";
+		};
+		5CB3F21721F87C3A00CAA7F4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5C7949F521F8B0E40042263B /* NavigationControllers */,
+				5CB3F23021F87DB200CAA7F4 /* Cells */,
+				5CB3F21A21F87C6100CAA7F4 /* ViewControllers */,
+				5CB3F21821F87C4400CAA7F4 /* IB */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5CB3F21821F87C4400CAA7F4 /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				5C794A1321F8C1100042263B /* LoginViewController.xib */,
+				5C794A0321F8B3090042263B /* ContactsTableViewController.xib */,
+				5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */,
+				5CB3F1F621F8784200CAA7F4 /* Main.storyboard */,
+			);
+			path = IB;
+			sourceTree = "<group>";
+		};
+		5CB3F21A21F87C6100CAA7F4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C794A1221F8C1100042263B /* LoginViewController.swift */,
+				5C794A0221F8B3090042263B /* ContactsTableViewController.swift */,
+				5CB152B321F8AE5C002FDD4F /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5CB3F21B21F87C9900CAA7F4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5CB3F23021F87DB200CAA7F4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +249,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C794A1521F8C1100042263B /* LoginViewController.xib in Resources */,
+				5C794A0521F8B3090042263B /* ContactsTableViewController.xib in Resources */,
 				5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */,
 				5CB3F1FD21F8784300CAA7F4 /* Assets.xcassets in Resources */,
 				5CB3F1F821F8784200CAA7F4 /* Main.storyboard in Resources */,
@@ -200,9 +271,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB152B621F8AFA8002FDD4F /* ContactsNavigationController.swift in Sources */,
+				5CB152B421F8AE5C002FDD4F /* MainViewController.swift in Sources */,
+				5C794A0421F8B3090042263B /* ContactsTableViewController.swift in Sources */,
 				5CB3F1FB21F8784200CAA7F4 /* EasyCall.xcdatamodeld in Sources */,
-				5CB3F1F521F8784200CAA7F4 /* ViewController.swift in Sources */,
+				5C794A1421F8C1100042263B /* LoginViewController.swift in Sources */,
+				5C7949F421F8B0950042263B /* LoginNavigationController.swift in Sources */,
 				5CB3F1F321F8784200CAA7F4 /* AppDelegate.swift in Sources */,
+				5CB3F23D21F881FC00CAA7F4 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,14 +440,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = CU7M5VQDU5;
 				INFOPLIST_FILE = EasyCall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fr.mobile.mojito.EasyCall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bewizyu.EasyCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ProfilDevDiginamic;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -381,14 +459,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = CU7M5VQDU5;
 				INFOPLIST_FILE = EasyCall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fr.mobile.mojito.EasyCall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bewizyu.EasyCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ProfilDevDiginamic;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

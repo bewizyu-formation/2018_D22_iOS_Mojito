@@ -1,0 +1,40 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform :ios
+
+platform :ios do
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    gym(
+      scheme: "EasyCall",
+      configuration: "Release",
+      project: './EasyCall.xcodeproj',
+      clean: true,
+      codesigning_identity: 'iPhone Developer: Vincent Leroux (Y5QP7SF5V6)',
+      export_method: 'development'
+    )
+    swiftlint(
+    mode: :lint,                            # SwiftLint mode: :lint (default) or :autocorrect
+    strict: false                           # Fail on warnings? (Default: false)
+)
+  end
+end
