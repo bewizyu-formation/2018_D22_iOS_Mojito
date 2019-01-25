@@ -9,8 +9,8 @@
 import UIKit
 
 class ContactsTableViewController: UITableViewController {
-    var contacts = [Contact]()
-    var contactsFiltered = [Contact]()
+    var contacts = [ContactMock]()
+    var contactsFiltered = [ContactMock]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,8 @@ class ContactsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         contacts = [
-            Contact(firstName: "mathis",lastName: "seigle"),
-            Contact(firstName: "etienne",lastName: "graff")
+            ContactMock(firstName: "mathis",lastName: "seigle"),
+            ContactMock(firstName: "etienne",lastName: "graff")
         ]
         print(contacts)
     }
@@ -62,7 +62,7 @@ class ContactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell", for: indexPath) as! ContactTableViewCell
        
-        cell.labelContactLastName?.text = contacts[indexPath.row]._firstName
+        cell.labelContactFirstName?.text = contacts[indexPath.row]._firstName
         cell.labelContactLastName?.text = contacts[indexPath.row]._lastName
         
         return cell
@@ -93,7 +93,7 @@ class ContactsTableViewController: UITableViewController {
 }
 
 //Supprimer une fois coredata et api mis en place
-class Contact {
+class ContactMock {
     var _firstName : String
     var _lastName : String
     

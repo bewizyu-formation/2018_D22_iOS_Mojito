@@ -10,7 +10,6 @@ import Foundation
 
 enum ApiError : Error {
     case InvalidToken
-    case WrongPassword
     case UnknownUser
     case InvalidPassword
     case PhoneUnique
@@ -427,7 +426,7 @@ class APIClient {
         case ERROR_SERVER_USER_UNKNOWN:
             return ApiError.UnknownUser
         case ERROR_SERVER_INVALID_PASSWORD:
-            return ApiError.WrongPassword
+            return ApiError.InvalidPassword
         default:
             return ApiError.UnknownError
         }
