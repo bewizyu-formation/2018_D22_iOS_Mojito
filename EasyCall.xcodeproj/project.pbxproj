@@ -21,6 +21,10 @@
 		5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */; };
 		5CB3F20B21F8784300CAA7F4 /* EasyCallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */; };
 		5CB3F23D21F881FC00CAA7F4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */; };
+		7C4BDA8221F8C3E100A661D1 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8021F8C3E100A661D1 /* ContactTableViewCell.swift */; };
+		7C4BDA8321F8C3E100A661D1 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8121F8C3E100A661D1 /* ContactTableViewCell.xib */; };
+		7C4BDA8621F9BCF100A661D1 /* HeaderContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8421F9BCF100A661D1 /* HeaderContactTableViewCell.swift */; };
+		7C4BDA8721F9BCF100A661D1 /* HeaderContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyCallTests.swift; sourceTree = "<group>"; };
 		5CB3F20C21F8784300CAA7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		7C4BDA8021F8C3E100A661D1 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		7C4BDA8121F8C3E100A661D1 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ContactTableViewCell.xib; path = ../Cells/ContactTableViewCell.xib; sourceTree = "<group>"; };
+		7C4BDA8421F9BCF100A661D1 /* HeaderContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContactTableViewCell.swift; sourceTree = "<group>"; };
+		7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderContactTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +143,8 @@
 		5CB3F21821F87C4400CAA7F4 /* IB */ = {
 			isa = PBXGroup;
 			children = (
+				7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */,
+				7C4BDA8121F8C3E100A661D1 /* ContactTableViewCell.xib */,
 				5C794A1321F8C1100042263B /* LoginViewController.xib */,
 				5C794A0321F8B3090042263B /* ContactsTableViewController.xib */,
 				5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */,
@@ -164,6 +174,8 @@
 		5CB3F23021F87DB200CAA7F4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7C4BDA8021F8C3E100A661D1 /* ContactTableViewCell.swift */,
+				7C4BDA8421F9BCF100A661D1 /* HeaderContactTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -249,7 +261,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C4BDA8321F8C3E100A661D1 /* ContactTableViewCell.xib in Resources */,
 				5C794A1521F8C1100042263B /* LoginViewController.xib in Resources */,
+				7C4BDA8721F9BCF100A661D1 /* HeaderContactTableViewCell.xib in Resources */,
 				5C794A0521F8B3090042263B /* ContactsTableViewController.xib in Resources */,
 				5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */,
 				5CB3F1FD21F8784300CAA7F4 /* Assets.xcassets in Resources */,
@@ -277,6 +291,8 @@
 				5CB3F1FB21F8784200CAA7F4 /* EasyCall.xcdatamodeld in Sources */,
 				5C794A1421F8C1100042263B /* LoginViewController.swift in Sources */,
 				5C7949F421F8B0950042263B /* LoginNavigationController.swift in Sources */,
+				7C4BDA8621F9BCF100A661D1 /* HeaderContactTableViewCell.swift in Sources */,
+				7C4BDA8221F8C3E100A661D1 /* ContactTableViewCell.swift in Sources */,
 				5CB3F1F321F8784200CAA7F4 /* AppDelegate.swift in Sources */,
 				5CB3F23D21F881FC00CAA7F4 /* APIClient.swift in Sources */,
 			);
