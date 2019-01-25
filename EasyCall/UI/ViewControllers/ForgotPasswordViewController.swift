@@ -2,7 +2,7 @@
 //  ForgotPasswordViewController.swift
 //  EasyCall
 //
-//  Created by formation2 on 23/01/2019.
+//  Created by formation4 on 24/01/2019.
 //  Copyright © 2019 mojito. All rights reserved.
 //
 
@@ -15,6 +15,7 @@ class ForgotPasswordViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+
 
     /*
     // MARK: - Navigation
