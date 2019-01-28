@@ -189,14 +189,15 @@ class APIClient {
     }
     
     @discardableResult
-    func createUser(phone: String, firstName: String, lastName: String, email: String, profile: String, onSuccess:@escaping ([String]) -> (), onError:@escaping (Error)->()) -> URLSessionTask {
+    func createUser(phone: String, password: String, firstName: String, lastName: String, email: String, profile: String, onSuccess:@escaping ([String]) -> (), onError:@escaping (Error)->()) -> URLSessionTask {
         var request = URLRequest(url: URL(string: "\(urlServer)\(urlSignIn)")! )
         request.httpMethod = "POST"
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let jsonObject: [String:Any] = [
+        let jsonObject: [String:String] = [
             self.KEY_SERVER_PHONE : phone,
+            self.KEY_SERVER_PASSWORD : password,
             self.KEY_SERVER_FIRSTNAME : firstName,
             self.KEY_SERVER_LASTNAME : lastName,
             self.KEY_SERVER_EMAIL : email,
