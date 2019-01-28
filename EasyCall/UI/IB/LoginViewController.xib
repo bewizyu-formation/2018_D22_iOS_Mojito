@@ -20,6 +20,7 @@
                 <outlet property="passwordInput" destination="SkY-Os-LjI" id="ujD-z5-oJm"/>
                 <outlet property="phoneErrorLabel" destination="pMq-F2-sds" id="GWO-9G-lIs"/>
                 <outlet property="phoneInput" destination="Mm1-nf-KyJ" id="0Hd-hd-Ab5"/>
+                <outlet property="scrollView" destination="Bv6-hY-iGs" id="BiB-XL-Exk"/>
                 <outlet property="signInButton" destination="cxH-l3-nb1" id="hZO-hr-6sI"/>
                 <outlet property="signUpButton" destination="ieC-ra-Nnj" id="cxB-fd-YOf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="JO6-u0-X9i"/>
@@ -93,7 +94,7 @@
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilJ-0t-WGs">
                                             <rect key="frame" x="0.0" y="207" width="204" height="88.5"/>
-                                            <color key="tintColor" red="1" green="0.42352941179999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="Mot de passe oublié ?"/>
                                             <connections>
                                                 <action selector="forgotPasswordTouch:" destination="-1" eventType="touchUpInside" id="G9Z-yO-fbj"/>
@@ -119,12 +120,12 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxH-l3-nb1">
                                             <rect key="frame" x="0.0" y="0.0" width="204" height="30"/>
-                                            <color key="backgroundColor" red="1" green="0.42352941176470588" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="Se connecter">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
-                                                <action selector="signInTouch:" destination="-1" eventType="touchUpInside" id="mB8-m4-UyC"/>
+                                                <action selector="signInTouch:" destination="-1" eventType="touchUpInside" id="T3g-WW-e8C"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieC-ra-Nnj">
@@ -164,7 +165,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="0.99607843139999996" green="0.79607843140000001" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Bv6-hY-iGs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Drn-2y-khO"/>
                 <constraint firstItem="Bv6-hY-iGs" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="V4V-gW-xLo"/>
