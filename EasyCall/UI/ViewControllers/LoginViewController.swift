@@ -96,14 +96,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         let context = appDelegate.persistentContainer.viewContext
                         
-                        let user = User(context: context)
-                    
                         let fetchRequest = NSFetchRequest<User>(entityName: "User")
                         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
                         
                         let results = try? context.fetch(fetchRequest)
-                        
-                        
                         
                         guard let users = results else {
                             return
@@ -113,7 +109,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             context.delete(user)
                         }
                         
-                        try? context.save()
+                        let user = User(context: context)
                         
                         user.token = token
                         user.phone = userInfo[0]

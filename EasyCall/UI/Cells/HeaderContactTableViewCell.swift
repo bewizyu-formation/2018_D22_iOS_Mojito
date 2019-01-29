@@ -24,8 +24,8 @@ class HeaderContactTableViewCell: UITableViewCell {
     
     
     @IBAction func onButtonTapped(_ sender: UIButton) {
-        let colorPrimary = UIColor(red: 255/255, green: 108/255, blue: 0/255, alpha: 1)
-        let colorSecondary = UIColor(red: 254/255, green: 203/255, blue: 152/255, alpha: 1)
+        let colorPrimary = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        let colorSecondary = UIColor(red: 47/255, green: 177/255, blue: 249/255, alpha: 1)
         let buttonTapped = sender
         buttonAll.backgroundColor = colorPrimary
         buttonFamily.backgroundColor = colorPrimary

@@ -23,32 +23,10 @@ class MainViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(userDidLoggedIn(notification:)), name: Notification.Name("UserLoggedIn"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userDidLoggedOut(notification:)), name: Notification.Name("UserLoggedOut"), object: nil)
         
-        contactsViewController = ContactsTableViewController(nibName: nil, bundle: nil)
         loginViewController = LoginViewController(nibName: nil, bundle: nil)
-        contactsNavigationController = UINavigationController(rootViewController: contactsViewController)
         loginNavigationController = UINavigationController(rootViewController: loginViewController)
-        
-        addChild(contactsNavigationController)
-        view.addSubview(contactsNavigationController.view)
-        contactsNavigationController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            contactsNavigationController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            contactsNavigationController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            contactsNavigationController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            contactsNavigationController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-            ])
-        contactsNavigationController.didMove(toParent: self)
-        
-        addChild(loginNavigationController)
-        view.addSubview(loginNavigationController.view)
-        loginNavigationController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            loginNavigationController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            loginNavigationController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            loginNavigationController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            loginNavigationController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-            ])
-        loginNavigationController.didMove(toParent: self)
+        contactsViewController = ContactsTableViewController(nibName: nil, bundle: nil)
+        contactsNavigationController = UINavigationController(rootViewController: contactsViewController)
         
         self.changeDisplayedController(animated: true)
     }
@@ -67,9 +45,33 @@ class MainViewController: UIViewController {
     
     func changeDisplayedController(animated : Bool) {
         if isConnected {
+            
+            addChild(contactsNavigationController)
+            view.addSubview(contactsNavigationController.view)
+            contactsNavigationController.view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                contactsNavigationController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                contactsNavigationController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                contactsNavigationController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+                contactsNavigationController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+                ])
+            contactsNavigationController.didMove(toParent: self)
             contactsNavigationController.view.isHidden = false
+            
             loginNavigationController.view.isHidden = true
         } else {
+            
+            addChild(loginNavigationController)
+            view.addSubview(loginNavigationController.view)
+            loginNavigationController.view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                loginNavigationController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                loginNavigationController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                loginNavigationController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+                loginNavigationController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+                ])
+            loginNavigationController.didMove(toParent: self)
+            
             contactsNavigationController.view.isHidden = true
             loginNavigationController.view.isHidden = false
         }
