@@ -19,7 +19,7 @@
                 <outlet property="buttonSMS" destination="jYu-dT-Xbl" id="7Pl-fg-jlR"/>
                 <outlet property="imageViewGravatar" destination="XP7-LW-r5E" id="cab-4I-KMH"/>
                 <outlet property="labelEmergency" destination="KU5-p5-SRc" id="QRi-Qa-UzM"/>
-                <outlet property="pickerProfile" destination="ee4-Gd-8bm" id="uLy-AG-A7N"/>
+                <outlet property="profileTextField" destination="BXV-HO-QO9" id="rRN-Ba-zRO"/>
                 <outlet property="scrollView" destination="rJ8-bt-vBP" id="if3-b0-wET"/>
                 <outlet property="skyFloatingTextFieldFirstName" destination="GBU-Ow-CoX" id="hxL-pc-JOd"/>
                 <outlet property="skyFloatingTextFieldLastName" destination="30q-4V-83z" id="DWa-Sx-DK6"/>
@@ -35,13 +35,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJ8-bt-vBP">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="585"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiI-xt-8dE">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="585"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dpn-gf-0UN">
-                                    <rect key="frame" x="20" y="20" width="280" height="565"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="dpn-gf-0UN">
+                                    <rect key="frame" x="20" y="20" width="280" height="425"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6wR-QS-7AQ">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
@@ -71,7 +71,7 @@
                                             <viewLayoutGuide key="safeArea" id="7BW-E2-KRR"/>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5xG-1L-KLc">
-                                            <rect key="frame" x="0.0" y="46" width="280" height="123"/>
+                                            <rect key="frame" x="0.0" y="43" width="280" height="123"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XP7-LW-r5E">
                                                     <rect key="frame" x="65" y="0.0" width="150" height="123"/>
@@ -85,7 +85,7 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Xrx-Ed-NxX">
-                                            <rect key="frame" x="0.0" y="185" width="280" height="30"/>
+                                            <rect key="frame" x="0.0" y="179" width="280" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6H-MH-NSy">
                                                     <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
@@ -104,10 +104,10 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Zhr-mQ-amZ">
-                                            <rect key="frame" x="0.0" y="231" width="280" height="46.5"/>
+                                            <rect key="frame" x="0.0" y="222" width="280" height="30"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBU-Ow-CoX" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="46.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -124,7 +124,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom de famille" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="30q-4V-83z" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                    <rect key="frame" x="147.5" y="0.0" width="132.5" height="46.5"/>
+                                                    <rect key="frame" x="147.5" y="0.0" width="132.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -143,10 +143,10 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="s7N-by-iVo">
-                                            <rect key="frame" x="0.0" y="293.5" width="280" height="46.5"/>
+                                            <rect key="frame" x="0.0" y="265" width="280" height="30"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Numéro de téléphone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OSv-r4-UAC" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="46.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -168,10 +168,10 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XeJ-Og-UF2">
-                                            <rect key="frame" x="0.0" y="356" width="280" height="46"/>
+                                            <rect key="frame" x="0.0" y="308" width="280" height="30"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzO-nd-oFP" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="46"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" searchField="YES"/>
                                                     </accessibility>
@@ -196,18 +196,18 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lEa-Vr-H3T">
-                                            <rect key="frame" x="0.0" y="418" width="280" height="100"/>
+                                            <rect key="frame" x="0.0" y="351" width="280" height="30"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee4-Gd-8bm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="100"/>
-                                                </pickerView>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BXV-HO-QO9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                                    <color key="textColor" red="0.5568627451" green="0.72156862749999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="B0e-Tk-XdJ"/>
-                                            </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPV-X6-YHO">
-                                            <rect key="frame" x="0.0" y="534" width="280" height="31"/>
+                                            <rect key="frame" x="0.0" y="394" width="280" height="31"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KU5-p5-SRc">
                                                     <rect key="frame" x="0.0" y="0.0" width="231" height="31"/>
@@ -223,6 +223,7 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="BXV-HO-QO9" firstAttribute="width" secondItem="dpn-gf-0UN" secondAttribute="width" id="8wO-s5-DZ3"/>
                                         <constraint firstItem="6wR-QS-7AQ" firstAttribute="top" secondItem="dpn-gf-0UN" secondAttribute="top" id="NeZ-uh-oey"/>
                                         <constraint firstItem="XeJ-Og-UF2" firstAttribute="width" secondItem="dpn-gf-0UN" secondAttribute="width" id="ajk-kr-zRF"/>
                                         <constraint firstItem="Zhr-mQ-amZ" firstAttribute="width" secondItem="dpn-gf-0UN" secondAttribute="width" id="bet-TT-Itl"/>
@@ -238,7 +239,7 @@
                             <constraints>
                                 <constraint firstItem="Xrx-Ed-NxX" firstAttribute="centerX" secondItem="NiI-xt-8dE" secondAttribute="centerX" id="3BQ-NG-ln7"/>
                                 <constraint firstAttribute="trailing" secondItem="dpn-gf-0UN" secondAttribute="trailing" constant="20" id="Bbo-ag-nVL"/>
-                                <constraint firstAttribute="bottom" secondItem="dpn-gf-0UN" secondAttribute="bottom" id="Hyo-S6-8RG"/>
+                                <constraint firstAttribute="bottom" secondItem="dpn-gf-0UN" secondAttribute="bottom" constant="125" id="Hyo-S6-8RG"/>
                                 <constraint firstItem="dpn-gf-0UN" firstAttribute="leading" secondItem="NiI-xt-8dE" secondAttribute="leading" constant="20" id="P1c-1g-DQw"/>
                                 <constraint firstItem="dpn-gf-0UN" firstAttribute="top" secondItem="NiI-xt-8dE" secondAttribute="top" constant="20" id="iPd-B4-TgI"/>
                                 <constraint firstItem="5xG-1L-KLc" firstAttribute="centerX" secondItem="NiI-xt-8dE" secondAttribute="centerX" id="sB1-SH-HAN"/>

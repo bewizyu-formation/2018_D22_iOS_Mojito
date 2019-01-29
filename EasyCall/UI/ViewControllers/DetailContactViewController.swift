@@ -9,19 +9,29 @@
 import UIKit
 import FontAwesome_swift
 import SkyFloatingLabelTextField
-//good file
-class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+import CoreData
+
+class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
 
     var contact : Contact!
-    var profilesList : [String] = []
+    var fetchedResultController: NSFetchedResultsController<User>?
+    var user : User!
+    
+    var alertConfirmDelete: UIAlertController!
+    var alertNoConnection: UIAlertController!
+    var profilePicker: UIPickerView!
+    var pickerData: [String] = [String]()
+    var isEditable: Bool = false
     var isEditMode : Bool = false
     var valueSelected : String?
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageViewGravatar: UIImageView!
     
     @IBOutlet weak var buttonDelete: UIButton!
     @IBOutlet weak var buttonEdit: UIButton!
     
+    @IBOutlet weak var profileTextField: UITextField!
     @IBOutlet weak var skyFloatingTextFieldFirstName: SkyFloatingLabelTextField!
    
     @IBOutlet weak var skyFloatingTextFieldLastName: SkyFloatingLabelTextField!
@@ -31,7 +41,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     @IBOutlet weak var skyFloatingTextFieldMail: SkyFloatingLabelTextField!
     
-    @IBOutlet weak var pickerProfile: UIPickerView!
+
     
     @IBOutlet weak var labelEmergency: UILabel!
     @IBOutlet weak var switchEmergency: UISwitch!
@@ -44,7 +54,13 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        profilePicker = UIPickerView()
+        profilePicker.delegate = self
+        profileTextField.inputView = profilePicker
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        
         self.navigationItem.title = "Détail du contact"
         
         imageViewGravatar.image = UIImage.fontAwesomeIcon(name: .userAlt, style: .solid, textColor: .blue, size: CGSize(width: 200, height: 200))
@@ -81,8 +97,8 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         skyFloatingTextFieldFirstName.delegate = self
         skyFloatingTextFieldLastName.delegate = self
         
-        pickerProfile.delegate = self
-        pickerProfile.dataSource = self
+        profilePicker.delegate = self
+        profilePicker.dataSource = self
         
         labelEmergency.text = "Contact urgent"
         
@@ -90,22 +106,50 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         skyFloatingTextFieldLastName.isEnabled = false
         skyFloatingTextFieldPhone.isEnabled = false
         skyFloatingTextFieldMail.isEnabled = false
-        pickerProfile.isUserInteractionEnabled = false
+        profileTextField.isEnabled = false
         
+        setupFetchedResultController()
+        
+        user = fetchedResultController?.object(at: indexPath)
+    }
+    
+    func setupFetchedResultController(){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "token", ascending: true)]
+        
+        let resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        resultController.delegate = self
+        
+        try? resultController.performFetch()
+        
+        self.fetchedResultController = resultController
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         APIClient.instance.getProfiles(onSuccess: { (profiles) in
-            self.profilesList = profiles
+            self.pickerData = profiles
             DispatchQueue.main.async {
-                self.pickerProfile.reloadComponent(0)
+                self.profilePicker.reloadComponent(0)
             }
-        }) { (Error) in
-            let alert = UIAlertController(title: "Pas de connexion", message: "Vous devez vous connecter à Internet pour obtenir la liste des profiles", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+        }, onError: { (error) in
+            let loadProfilesFailedAlert = UIAlertController(title: "Chargement impossible", message: "une erreur inconnue est survenue", preferredStyle: UIAlertController.Style.alert)
+            loadProfilesFailedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(loadProfilesFailedAlert, animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -113,22 +157,18 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return profilesList.count
+        return pickerData.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return profilesList[row]
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        profileTextField.text = pickerData[row]
+        profileTextField.resignFirstResponder()
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 20.0
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        valueSelected = profilesList[row] as String
-    }
-
     @IBAction func onTapEditButton(_ sender: UIButton) {
         if isEditMode == false {
             isEditMode = true
@@ -136,7 +176,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
             skyFloatingTextFieldLastName.isEnabled = true
             skyFloatingTextFieldPhone.isEnabled = true
             skyFloatingTextFieldMail.isEnabled = true
-            pickerProfile.isUserInteractionEnabled = true
+            profileTextField.isEnabled = true
         }else {
             
             guard let phoneNumber = skyFloatingTextFieldPhone.text else {
@@ -170,27 +210,30 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
     }
     
+    func displayAlertViewForDeleteButton(){
+        alertConfirmDelete = UIAlertController(title: "Suppression du contact!", message: "Etes-vous sûr de vouloir supprimer le contact?", preferredStyle: UIAlertController.Style.alert)
+        alertNoConnection = UIAlertController(title: "Pas de connexion", message: "Vous devez être connecté à Internet pour supprimer un contact!", preferredStyle: UIAlertController.Style.alert)
+        alertNoConnection.addAction(UIAlertAction(title: "Ok", style: .default))
+    }
+    
     @IBAction func onTapDeleteButton(_ sender: Any) {
-       /* let refreshAlert = UIAlertController(title: "Suppression du contact!", message: "Etes-vous sûr de vouloir supprimer le contact?", preferredStyle: UIAlertController.Style.alert)
-        
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            APIClient.instance.deleteContact(token: "token a mettre", id: "id du contact", onSuccess: {
+        displayAlertViewForDeleteButton()
+        alertConfirmDelete.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            APIClient.instance.deleteContact(token: self.user.token!, id: self.contact.serverID!, onSuccess: {
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }
             }) { (Error) in
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Pas de connexion", message: "Vous devez vous connecter à Internet pour supprimer un contact", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(self.alertNoConnection, animated: true, completion: nil)
                 }
             }
         }))
         
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+        alertConfirmDelete.addAction(UIAlertAction(title: "Ne pas supprimer", style: .cancel, handler: { (action: UIAlertAction!) in
             print("suppresion annulée")
         }))
-        present(refreshAlert, animated: true, completion: nil)*/
+        present(alertConfirmDelete, animated: true, completion: nil)
     }
     
     @IBAction func onTapSMSButton(_ sender: Any) {
