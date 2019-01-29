@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B46E08A7A7E427CEF729CC1 /* Pods_EasyCall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDCF276602C4327560A8A0A9 /* Pods_EasyCall.framework */; };
 		5C4E831221FF226000BAB37C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E831121FF226000BAB37C /* CreateAccountViewController.swift */; };
 		5C4E831621FF399B00BAB37C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E831521FF399B00BAB37C /* LoginViewController.swift */; };
 		5C4E832021FF600400BAB37C /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E831321FF38E000BAB37C /* CreateAccountViewController.xib */; };
@@ -14,7 +15,6 @@
 		5C4E832221FF600400BAB37C /* HeaderContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */; };
 		5C4E832321FF600400BAB37C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C794A1321F8C1100042263B /* LoginViewController.xib */; };
 		5C4E832421FF600400BAB37C /* ContactsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C794A0321F8B3090042263B /* ContactsTableViewController.xib */; };
-		4B46E08A7A7E427CEF729CC1 /* Pods_EasyCall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDCF276602C4327560A8A0A9 /* Pods_EasyCall.framework */; };
 		5C7949F421F8B0950042263B /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7949F321F8B0950042263B /* LoginNavigationController.swift */; };
 		5C7EBA3F21FB51E10006D914 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EBA3E21FB51E10006D914 /* ContactsTableViewController.swift */; };
 		5CB152B421F8AE5C002FDD4F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB152B321F8AE5C002FDD4F /* MainViewController.swift */; };
@@ -26,9 +26,10 @@
 		5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */; };
 		5CB3F20B21F8784300CAA7F4 /* EasyCallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */; };
 		5CB3F23D21F881FC00CAA7F4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */; };
-		5CC68F1121FB23B400947243 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC68F1021FB23B400947243 /* ContactsTableViewController.swift */; };
 		7C4BDA8221F8C3E100A661D1 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8021F8C3E100A661D1 /* ContactTableViewCell.swift */; };
 		7C4BDA8621F9BCF100A661D1 /* HeaderContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8421F9BCF100A661D1 /* HeaderContactTableViewCell.swift */; };
+		7C981F3F22004AB0007A2811 /* DetailContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C981F3E22004AB0007A2811 /* DetailContactViewController.swift */; };
+		7C981F4122004ABB007A2811 /* DetailContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C981F4022004ABB007A2811 /* DetailContactViewController.xib */; };
 		9E0CC61C26CBDBCA9B908B87 /* Pods_EasyCallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E3E84ADCCEA52E4F516209 /* Pods_EasyCallTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,12 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041177F13ED01407B70BDCC7 /* Pods-EasyCallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCallTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCallTests/Pods-EasyCallTests.debug.xcconfig"; sourceTree = "<group>"; };
+		504231F2D51ABA0129318BB5 /* Pods-EasyCallTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCallTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCallTests/Pods-EasyCallTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C4E831121FF226000BAB37C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		5C4E831321FF38E000BAB37C /* CreateAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
 		5C4E831521FF399B00BAB37C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5C4E831721FF5B6600BAB37C /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
-		041177F13ED01407B70BDCC7 /* Pods-EasyCallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCallTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCallTests/Pods-EasyCallTests.debug.xcconfig"; sourceTree = "<group>"; };
-		504231F2D51ABA0129318BB5 /* Pods-EasyCallTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCallTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCallTests/Pods-EasyCallTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C7949F321F8B0950042263B /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		5C794A0321F8B3090042263B /* ContactsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewController.xib; sourceTree = "<group>"; };
 		5C794A1321F8C1100042263B /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -66,11 +67,12 @@
 		5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyCallTests.swift; sourceTree = "<group>"; };
 		5CB3F20C21F8784300CAA7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		5CC68F1021FB23B400947243 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		79E3E84ADCCEA52E4F516209 /* Pods_EasyCallTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyCallTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4BDA8021F8C3E100A661D1 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		7C4BDA8421F9BCF100A661D1 /* HeaderContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContactTableViewCell.swift; sourceTree = "<group>"; };
 		7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderContactTableViewCell.xib; sourceTree = "<group>"; };
+		7C981F3E22004AB0007A2811 /* DetailContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContactViewController.swift; sourceTree = "<group>"; };
+		7C981F4022004ABB007A2811 /* DetailContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailContactViewController.xib; sourceTree = "<group>"; };
 		CAD8013E7D74393DB8982F6C /* Pods-EasyCall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCall.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCall/Pods-EasyCall.release.xcconfig"; sourceTree = "<group>"; };
 		D8CEDACB4418112956E192AD /* Pods-EasyCall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCall/Pods-EasyCall.debug.xcconfig"; sourceTree = "<group>"; };
 		DDCF276602C4327560A8A0A9 /* Pods_EasyCall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyCall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +163,7 @@
 		5CB3F21821F87C4400CAA7F4 /* IB */ = {
 			isa = PBXGroup;
 			children = (
+				7C981F4022004ABB007A2811 /* DetailContactViewController.xib */,
 				5C4E831321FF38E000BAB37C /* CreateAccountViewController.xib */,
 				5C4E831721FF5B6600BAB37C /* ContactTableViewCell.xib */,
 				7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */,
@@ -178,6 +181,7 @@
 				5C4E831521FF399B00BAB37C /* LoginViewController.swift */,
 				5C4E831121FF226000BAB37C /* CreateAccountViewController.swift */,
 				5C7EBA3E21FB51E10006D914 /* ContactsTableViewController.swift */,
+				7C981F3E22004AB0007A2811 /* DetailContactViewController.swift */,
 				5CB152B321F8AE5C002FDD4F /* MainViewController.swift */,
 			);
 			path = ViewControllers;
@@ -311,6 +315,7 @@
 				5C4E832421FF600400BAB37C /* ContactsTableViewController.xib in Resources */,
 				5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */,
 				5CB3F1FD21F8784300CAA7F4 /* Assets.xcassets in Resources */,
+				7C981F4122004ABB007A2811 /* DetailContactViewController.xib in Resources */,
 				5CB3F1F821F8784200CAA7F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,12 +384,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-EasyCall/Pods-EasyCall-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -402,6 +409,7 @@
 				5CB152B621F8AFA8002FDD4F /* ContactsNavigationController.swift in Sources */,
 				5CB152B421F8AE5C002FDD4F /* MainViewController.swift in Sources */,
 				5CB3F1FB21F8784200CAA7F4 /* EasyCall.xcdatamodeld in Sources */,
+				7C981F3F22004AB0007A2811 /* DetailContactViewController.swift in Sources */,
 				5C4E831221FF226000BAB37C /* CreateAccountViewController.swift in Sources */,
 				5C7EBA3F21FB51E10006D914 /* ContactsTableViewController.swift in Sources */,
 				5C7949F421F8B0950042263B /* LoginNavigationController.swift in Sources */,

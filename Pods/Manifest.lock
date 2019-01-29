@@ -1,0 +1,20 @@
+PODS:
+  - FontAwesome.swift (1.4.8)
+  - SkyFloatingLabelTextField (3.6.0)
+
+DEPENDENCIES:
+  - FontAwesome.swift
+  - SkyFloatingLabelTextField
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FontAwesome.swift
+    - SkyFloatingLabelTextField
+
+SPEC CHECKSUMS:
+  FontAwesome.swift: fb8637bffb9a588c7e8c753c084565b27b20a39d
+  SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
+
+PODFILE CHECKSUM: 79cebbe805936a5244637c39047cc9ba06370de6
+
+COCOAPODS: 1.5.3

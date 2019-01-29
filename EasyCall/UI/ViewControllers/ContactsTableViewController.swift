@@ -98,8 +98,9 @@ class ContactsTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Une fois l'ecran detail créé, faire la navigation vers celui-ci
-        // print(fetchedResultController?.object(at: indexPath).phone)
+        let detailContactController = DetailContactViewController(nibName: "DetailContactViewController", bundle: nil)
+        detailContactController.contact = fetchedResultController?.object(at: indexPath)
+        navigationController?.pushViewController(detailContactController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
