@@ -155,6 +155,7 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         self.updatePredicateAndReloadData()
     }
     
