@@ -58,18 +58,20 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-            APIClient.instance.getProfiles(onSuccess: { (profiles) in
-                self.pickerData = profiles
-                DispatchQueue.main.async {
-                    self.profilePickerView.reloadComponent(0)
-                }
-            }, onError: { (error) in
-                let loadProfilesFailedAlert = UIAlertController(title: "Chargement impossible", message: "une erreur inconnue est survenue", preferredStyle: UIAlertController.Style.alert)
-                loadProfilesFailedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(loadProfilesFailedAlert, animated: true, completion: nil)
-                self.navigationController?.popViewController(animated: true)
-            })
+        let loader = UIViewController.displaySpinner(onView: self.view)
+        APIClient.instance.getProfiles(onSuccess: { (profiles) in
+            self.pickerData = profiles
+            UIViewController.removeSpinner(spinner: loader)
+            DispatchQueue.main.async {
+                self.profilePickerView.reloadComponent(0)
+            }
+        }, onError: { (error) in
+            UIViewController.removeSpinner(spinner: loader)
+            let loadProfilesFailedAlert = UIAlertController(title: "Chargement impossible", message: "une erreur inconnue est survenue", preferredStyle: UIAlertController.Style.alert)
+            loadProfilesFailedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(loadProfilesFailedAlert, animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func registerForKeyboardNotifications() {
@@ -184,22 +186,22 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
         }
     }
     func createAccount(){
-        print(!(firstNameTextField.text?.isEmpty)!)
-        print(!(lastNameTextField.text?.isEmpty)!)
-        print(passwordTextField.text == confirmPasswordTextField.text)
-        print(self.isValidEmail(testStr: emailTextField.text ?? ""))
-        print(phoneTextField.text?.count == 10)
-        print(pickerData[profilePickerView.selectedRow(inComponent: 0)])
+        let loader = UIViewController.displaySpinner(onView: self.view)
         if !firstNameTextField.text!.isEmpty && !(lastNameTextField.text?.isEmpty)! && passwordTextField.text == confirmPasswordTextField.text && self.isValidEmail(testStr: emailTextField.text ?? "") && phoneTextField.text?.count == 10 {
-            DispatchQueue.main.async {
-                APIClient.instance.createUser(phone: self.phoneTextField.text!,password: self.passwordTextField.text!, firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.emailTextField.text!, profile: self.pickerData[self.profilePickerView.selectedRow(inComponent: 0)], onSuccess: { (userInfo) in
+            
+            APIClient.instance.createUser(phone: self.phoneTextField.text!,password: self.passwordTextField.text!, firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.emailTextField.text!, profile: self.pickerData[self.profilePickerView.selectedRow(inComponent: 0)], onSuccess: { (userInfo) in
+                DispatchQueue.main.async {
+                    UIViewController.removeSpinner(spinner: loader)
                     let creationAlert = UIAlertController(title: "Création réussie", message: "L'utilisateur " + userInfo[1] + " a bien été créé", preferredStyle: UIAlertController.Style.alert)
                     let navigateToLogin = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                         self.navigationController?.popViewController(animated: true)
                     }
                     creationAlert.addAction(navigateToLogin)
                     self.present(creationAlert, animated: true, completion: nil)
-                }) { (error) in
+                }
+            }) { (error) in
+                DispatchQueue.main.async {
+                    UIViewController.removeSpinner(spinner: loader)
                     guard let error = error as? ApiError else {
                         return
                     }
@@ -217,10 +219,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
                     self.present(creationFailedAlert, animated: true, completion: nil)
                     self.navigationController?.popViewController(animated: true)
                 }
-                
             }
             
         } else {
+            UIViewController.removeSpinner(spinner: loader)
             let invalidFieldsAlert = UIAlertController(title: "Création impossible", message: "Les champs doivent être correctement renseignés", preferredStyle: UIAlertController.Style.alert)
             invalidFieldsAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(invalidFieldsAlert, animated: true, completion: nil)
@@ -246,13 +248,4 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
     }
     
 }
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
 

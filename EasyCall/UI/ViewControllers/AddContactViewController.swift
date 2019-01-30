@@ -68,13 +68,15 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
         userToken = user.token
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        let loader = UIViewController.displaySpinner(onView: self.view)
         APIClient.instance.getProfiles(onSuccess: { (profiles) in
             self.pickerData = profiles
             DispatchQueue.main.async {
                 self.profilePicker.reloadComponent(0)
             }
+            UIViewController.removeSpinner(spinner: loader)
         }, onError: { (error) in
+            UIViewController.removeSpinner(spinner: loader)
             let loadProfilesFailedAlert = UIAlertController(title: "Chargement impossible", message: "une erreur inconnue est survenue", preferredStyle: UIAlertController.Style.alert)
             loadProfilesFailedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(loadProfilesFailedAlert, animated: true, completion: nil)
@@ -164,6 +166,7 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     }
     
     func createContact(){
+        let loader = UIViewController.displaySpinner(onView: self.view)
         if !firstNameTextField.text!.isEmpty && !(lastNameTextField.text?.isEmpty)! && self.isValidEmail(testStr: emailTextField.text ?? "") && phoneTextField.text?.count == 10 {
             APIClient.instance.createContact(token: userToken, phone: phoneTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!, profile: profileTextField.text!, gravatar: "https://www.gravatar.com/avatar/", isFamilinkUser: isEasyCallUserSwitch.isOn, isEmergencyUser: isEmergencyContactSwitch.isOn, onSuccess: { (contactInfo) in
                 DispatchQueue.main.async {
@@ -197,12 +200,13 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
                     user.addToContacts(contact)
                     
                     try? context.save()
-                    
+                    UIViewController.removeSpinner(spinner: loader)
                     self.navigationController?.popViewController(animated: true)
                 }
                 
                 
             }) { (error) in
+                UIViewController.removeSpinner(spinner: loader)
                 DispatchQueue.main.async {
                     guard let error = error as? ApiError else {
                         return
@@ -223,6 +227,7 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
                 }
             }
         } else {
+            UIViewController.removeSpinner(spinner: loader)
             invalidEmailLabel.isHidden = false
             invalidPhoneLabel.isHidden = false
             emptyLastNameLabel.isHidden = false
@@ -271,16 +276,6 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         profileTextField.text = pickerData[row]
         profileTextField.resignFirstResponder()
-    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    }   
 }
 

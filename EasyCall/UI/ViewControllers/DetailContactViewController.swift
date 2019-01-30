@@ -131,13 +131,16 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let loader = UIViewController.displaySpinner(onView: self.view)
         super.viewWillAppear(animated)
         APIClient.instance.getProfiles(onSuccess: { (profiles) in
             self.pickerData = profiles
             DispatchQueue.main.async {
                 self.profilePicker.reloadComponent(0)
             }
+            UIViewController.removeSpinner(spinner: loader)
         }, onError: { (error) in
+            UIViewController.removeSpinner(spinner: loader)
             let loadProfilesFailedAlert = UIAlertController(title: "Chargement impossible", message: "une erreur inconnue est survenue", preferredStyle: UIAlertController.Style.alert)
             loadProfilesFailedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(loadProfilesFailedAlert, animated: true, completion: nil)
@@ -294,13 +297,16 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func onDeleteTap(_ sender: Any) {
+        let loader = UIViewController.displaySpinner(onView: self.view)
         displayAlertViewForDeleteButton()
         alertConfirmDelete.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             APIClient.instance.deleteContact(token: self.user.token!, id: self.contact.serverID!, onSuccess: {
+                UIViewController.removeSpinner(spinner: loader)
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }
             }) { (Error) in
+                UIViewController.removeSpinner(spinner: loader)
                 DispatchQueue.main.async {
                     self.present(self.alertNoConnection, animated: true, completion: nil)
                 }

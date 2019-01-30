@@ -61,13 +61,15 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        let loader = UIViewController.displaySpinner(onView: self.view)
         APIClient.instance.getProfiles(onSuccess: { (profiles) in
             self.pickerData = profiles
+            UIViewController.removeSpinner(spinner: loader)
             DispatchQueue.main.async {
                 self.profilePicker.reloadComponent(0)
             }
         }, onError: { (error) in
+            UIViewController.removeSpinner(spinner: loader)
             let loadProfilesFailedAlert = UIAlertController(title: "Chargement impossible", message: "une erreur inconnue est survenue", preferredStyle: UIAlertController.Style.alert)
             loadProfilesFailedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(loadProfilesFailedAlert, animated: true, completion: nil)
@@ -168,6 +170,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.present(connectionAlert, animated: true, completion: nil)
     }
     @IBAction func validateButtonPressed(_ sender: Any) {
+        let loader = UIViewController.displaySpinner(onView: self.view)
         if !firstNameTextField.text!.isEmpty && !(lastNameTextField.text?.isEmpty)! && isValidEmail(testStr: emailTextField.text ?? "") {
             APIClient.instance.updateUser(token: userToken, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!, profile: profileTextField.text!, onSuccess: { (newUserInfo) in
                 DispatchQueue.main.async {
@@ -175,8 +178,10 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
                     self.changeEditable(false)
                     self.validateAndCancelStackView.isHidden = true
                     self.editButton.isHidden = false
+                    UIViewController.removeSpinner(spinner: loader)
                 }
             }) { (error) in
+                UIViewController.removeSpinner(spinner: loader)
                 guard let apiError = error as? ApiError else {
                     return
                 }
@@ -197,6 +202,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
                 }
             }
         } else {
+            UIViewController.removeSpinner(spinner: loader)
             let updateAlert = UIAlertController(title: "Modification impossible", message: "Votre session a expiré", preferredStyle: UIAlertController.Style.alert)
             let navigateToLogin = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                 // NotificationCenter.default.post(name: NSNotification.Name("UserLoggedIn"), object: nil)
@@ -238,15 +244,5 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
         context.insert(user)
         
         try? context.save()
-    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    }    
 }
