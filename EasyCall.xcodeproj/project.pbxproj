@@ -12,15 +12,11 @@
 		5C4E831621FF399B00BAB37C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E831521FF399B00BAB37C /* LoginViewController.swift */; };
 		5C4E832021FF600400BAB37C /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E831321FF38E000BAB37C /* CreateAccountViewController.xib */; };
 		5C4E832121FF600400BAB37C /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E831721FF5B6600BAB37C /* ContactTableViewCell.xib */; };
-		5C4E832221FF600400BAB37C /* HeaderContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */; };
 		5C4E832321FF600400BAB37C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C794A1321F8C1100042263B /* LoginViewController.xib */; };
-		5C4E832421FF600400BAB37C /* ContactsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C794A0321F8B3090042263B /* ContactsTableViewController.xib */; };
 		5C6EED172200A1E500FE26F0 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EED152200A1E500FE26F0 /* UserSettingsViewController.swift */; };
 		5C6EED182200A1E500FE26F0 /* UserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6EED162200A1E500FE26F0 /* UserSettingsViewController.xib */; };
-		5C6EED1B2200AF5000FE26F0 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EED192200AF5000FE26F0 /* AddContactViewController.swift */; };
-		5C6EED1C2200AF5000FE26F0 /* AddContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6EED1A2200AF5000FE26F0 /* AddContactViewController.xib */; };
 		5C7949F421F8B0950042263B /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7949F321F8B0950042263B /* LoginNavigationController.swift */; };
-		5C7EBA3F21FB51E10006D914 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EBA3E21FB51E10006D914 /* ContactsTableViewController.swift */; };
+		5C7EBA3F21FB51E10006D914 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EBA3E21FB51E10006D914 /* ContactsViewController.swift */; };
 		5CB152B421F8AE5C002FDD4F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB152B321F8AE5C002FDD4F /* MainViewController.swift */; };
 		5CB152B621F8AFA8002FDD4F /* ContactsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB152B521F8AFA8002FDD4F /* ContactsNavigationController.swift */; };
 		5CB3F1F321F8784200CAA7F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F1F221F8784200CAA7F4 /* AppDelegate.swift */; };
@@ -30,8 +26,9 @@
 		5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */; };
 		5CB3F20B21F8784300CAA7F4 /* EasyCallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */; };
 		5CB3F23D21F881FC00CAA7F4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */; };
+		5CC5DDFA2201A250006C384F /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CC5DDF92201A250006C384F /* ContactsViewController.xib */; };
+		5CC5DDFC2201A403006C384F /* ApplicationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5DDFB2201A403006C384F /* ApplicationStyle.swift */; };
 		7C4BDA8221F8C3E100A661D1 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8021F8C3E100A661D1 /* ContactTableViewCell.swift */; };
-		7C4BDA8621F9BCF100A661D1 /* HeaderContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BDA8421F9BCF100A661D1 /* HeaderContactTableViewCell.swift */; };
 		7C981F3F22004AB0007A2811 /* DetailContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C981F3E22004AB0007A2811 /* DetailContactViewController.swift */; };
 		7C981F4122004ABB007A2811 /* DetailContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C981F4022004ABB007A2811 /* DetailContactViewController.xib */; };
 		9E0CC61C26CBDBCA9B908B87 /* Pods_EasyCallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E3E84ADCCEA52E4F516209 /* Pods_EasyCallTests.framework */; };
@@ -56,12 +53,9 @@
 		5C4E831721FF5B6600BAB37C /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		5C6EED152200A1E500FE26F0 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		5C6EED162200A1E500FE26F0 /* UserSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSettingsViewController.xib; sourceTree = "<group>"; };
-		5C6EED192200AF5000FE26F0 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
-		5C6EED1A2200AF5000FE26F0 /* AddContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddContactViewController.xib; sourceTree = "<group>"; };
 		5C7949F321F8B0950042263B /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
-		5C794A0321F8B3090042263B /* ContactsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewController.xib; sourceTree = "<group>"; };
 		5C794A1321F8C1100042263B /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		5C7EBA3E21FB51E10006D914 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		5C7EBA3E21FB51E10006D914 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		5CB152B321F8AE5C002FDD4F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5CB152B521F8AFA8002FDD4F /* ContactsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsNavigationController.swift; sourceTree = "<group>"; };
 		5CB3F1EF21F8784200CAA7F4 /* EasyCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,10 +69,10 @@
 		5CB3F20A21F8784300CAA7F4 /* EasyCallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyCallTests.swift; sourceTree = "<group>"; };
 		5CB3F20C21F8784300CAA7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CB3F23C21F881FC00CAA7F4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		5CC5DDF92201A250006C384F /* ContactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
+		5CC5DDFB2201A403006C384F /* ApplicationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStyle.swift; sourceTree = "<group>"; };
 		79E3E84ADCCEA52E4F516209 /* Pods_EasyCallTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyCallTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4BDA8021F8C3E100A661D1 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
-		7C4BDA8421F9BCF100A661D1 /* HeaderContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContactTableViewCell.swift; sourceTree = "<group>"; };
-		7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderContactTableViewCell.xib; sourceTree = "<group>"; };
 		7C981F3E22004AB0007A2811 /* DetailContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContactViewController.swift; sourceTree = "<group>"; };
 		7C981F4022004ABB007A2811 /* DetailContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailContactViewController.xib; sourceTree = "<group>"; };
 		CAD8013E7D74393DB8982F6C /* Pods-EasyCall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCall.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCall/Pods-EasyCall.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,10 +154,11 @@
 		5CB3F21721F87C3A00CAA7F4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				5C7949F521F8B0E40042263B /* NavigationControllers */,
 				5CB3F23021F87DB200CAA7F4 /* Cells */,
+				5C7949F521F8B0E40042263B /* NavigationControllers */,
 				5CB3F21A21F87C6100CAA7F4 /* ViewControllers */,
 				5CB3F21821F87C4400CAA7F4 /* IB */,
+				5CC5DDFB2201A403006C384F /* ApplicationStyle.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -171,14 +166,12 @@
 		5CB3F21821F87C4400CAA7F4 /* IB */ = {
 			isa = PBXGroup;
 			children = (
-				5C6EED1A2200AF5000FE26F0 /* AddContactViewController.xib */,
 				5C6EED162200A1E500FE26F0 /* UserSettingsViewController.xib */,
 				7C981F4022004ABB007A2811 /* DetailContactViewController.xib */,
 				5C4E831321FF38E000BAB37C /* CreateAccountViewController.xib */,
 				5C4E831721FF5B6600BAB37C /* ContactTableViewCell.xib */,
-				7C4BDA8521F9BCF100A661D1 /* HeaderContactTableViewCell.xib */,
 				5C794A1321F8C1100042263B /* LoginViewController.xib */,
-				5C794A0321F8B3090042263B /* ContactsTableViewController.xib */,
+				5CC5DDF92201A250006C384F /* ContactsViewController.xib */,
 				5CB3F1FE21F8784300CAA7F4 /* LaunchScreen.storyboard */,
 				5CB3F1F621F8784200CAA7F4 /* Main.storyboard */,
 			);
@@ -190,11 +183,10 @@
 			children = (
 				5C4E831521FF399B00BAB37C /* LoginViewController.swift */,
 				5C4E831121FF226000BAB37C /* CreateAccountViewController.swift */,
-				5C7EBA3E21FB51E10006D914 /* ContactsTableViewController.swift */,
+				5C7EBA3E21FB51E10006D914 /* ContactsViewController.swift */,
 				7C981F3E22004AB0007A2811 /* DetailContactViewController.swift */,
 				5CB152B321F8AE5C002FDD4F /* MainViewController.swift */,
 				5C6EED152200A1E500FE26F0 /* UserSettingsViewController.swift */,
-				5C6EED192200AF5000FE26F0 /* AddContactViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -211,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				7C4BDA8021F8C3E100A661D1 /* ContactTableViewCell.swift */,
-				7C4BDA8421F9BCF100A661D1 /* HeaderContactTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -322,12 +313,10 @@
 			files = (
 				5C4E832021FF600400BAB37C /* CreateAccountViewController.xib in Resources */,
 				5C4E832121FF600400BAB37C /* ContactTableViewCell.xib in Resources */,
-				5C4E832221FF600400BAB37C /* HeaderContactTableViewCell.xib in Resources */,
 				5C4E832321FF600400BAB37C /* LoginViewController.xib in Resources */,
-				5C4E832421FF600400BAB37C /* ContactsTableViewController.xib in Resources */,
+				5CC5DDFA2201A250006C384F /* ContactsViewController.xib in Resources */,
 				5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */,
 				5C6EED182200A1E500FE26F0 /* UserSettingsViewController.xib in Resources */,
-				5C6EED1C2200AF5000FE26F0 /* AddContactViewController.xib in Resources */,
 				5CB3F1FD21F8784300CAA7F4 /* Assets.xcassets in Resources */,
 				7C981F4122004ABB007A2811 /* DetailContactViewController.xib in Resources */,
 				5CB3F1F821F8784200CAA7F4 /* Main.storyboard in Resources */,
@@ -421,15 +410,14 @@
 			files = (
 				5C4E831621FF399B00BAB37C /* LoginViewController.swift in Sources */,
 				5CB152B621F8AFA8002FDD4F /* ContactsNavigationController.swift in Sources */,
+				5CC5DDFC2201A403006C384F /* ApplicationStyle.swift in Sources */,
 				5C6EED172200A1E500FE26F0 /* UserSettingsViewController.swift in Sources */,
 				5CB152B421F8AE5C002FDD4F /* MainViewController.swift in Sources */,
 				5CB3F1FB21F8784200CAA7F4 /* EasyCall.xcdatamodeld in Sources */,
 				7C981F3F22004AB0007A2811 /* DetailContactViewController.swift in Sources */,
 				5C4E831221FF226000BAB37C /* CreateAccountViewController.swift in Sources */,
-				5C7EBA3F21FB51E10006D914 /* ContactsTableViewController.swift in Sources */,
+				5C7EBA3F21FB51E10006D914 /* ContactsViewController.swift in Sources */,
 				5C7949F421F8B0950042263B /* LoginNavigationController.swift in Sources */,
-				5C6EED1B2200AF5000FE26F0 /* AddContactViewController.swift in Sources */,
-				7C4BDA8621F9BCF100A661D1 /* HeaderContactTableViewCell.swift in Sources */,
 				7C4BDA8221F8C3E100A661D1 /* ContactTableViewCell.swift in Sources */,
 				5CB3F1F321F8784200CAA7F4 /* AppDelegate.swift in Sources */,
 				5CB3F23D21F881FC00CAA7F4 /* APIClient.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var contactsViewController: ContactsTableViewController!
+    var contactsViewController: ContactsViewController!
     var loginViewController: LoginViewController!
     var loginNavigationController: UINavigationController!
     var contactsNavigationController: UINavigationController!
@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
         
         loginViewController = LoginViewController(nibName: nil, bundle: nil)
         loginNavigationController = UINavigationController(rootViewController: loginViewController)
-        contactsViewController = ContactsTableViewController(nibName: nil, bundle: nil)
+        contactsViewController = ContactsViewController (nibName: nil, bundle: nil)
         contactsNavigationController = UINavigationController(rootViewController: contactsViewController)
         
         self.changeDisplayedController(animated: true)

@@ -14,6 +14,9 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var validateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
     @IBOutlet weak var validateAndCancelStackView: UIStackView!
     @IBOutlet weak var profileTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,6 +27,9 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
     var userToken: String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Mon compte"
+        
         profilePicker = UIPickerView()
         profilePicker.delegate = self
         profileTextField.inputView = profilePicker
@@ -47,6 +53,11 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
         lastNameTextField.text = user.lastName
         emailTextField.text = user.email
         userToken = user.token
+        
+        self.editButton.backgroundColor = EasyCallStyle.colorPrimary
+        self.cancelButton.backgroundColor = EasyCallStyle.colorPrimary
+        self.validateButton.backgroundColor = EasyCallStyle.colorPrimary
+        self.logoutButton.backgroundColor = UIColor.red
     }
     
     override func viewWillAppear(_ animated: Bool) {

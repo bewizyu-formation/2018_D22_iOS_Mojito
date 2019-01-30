@@ -21,11 +21,12 @@ class ContactTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        buttonPhone.titleLabel?.font = UIFont.fontAwesome(ofSize: 50, style: .solid)
-        buttonPhone.setTitle(String.fontAwesomeIcon(name: .phoneSquare), for: .normal)
+        self.imageViewGravatar.layer.cornerRadius = 5
+        buttonPhone.titleLabel?.font = UIFont.fontAwesome(ofSize: 40, style: .solid)
+        buttonPhone.setTitle(String.fontAwesomeIcon(name: .phone), for: .normal)
+        //buttonPhone. = EasyCallStyle.colorSecondary
     }
     
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
