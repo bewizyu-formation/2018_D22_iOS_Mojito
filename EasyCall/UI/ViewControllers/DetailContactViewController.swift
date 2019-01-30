@@ -82,7 +82,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         leaveEditMode()
         
-        imageViewGravatar.image = UIImage.fontAwesomeIcon(name: .userAlt, style: .solid, textColor: .blue, size: CGSize(width: 200, height: 200))
+        imageViewGravatar.image = UIImage.fontAwesomeIcon(name: .userAlt, style: .solid, textColor: EasyCallStyle.colorPrimary, size: CGSize(width: 200, height: 200))
         
         buttonDelete.titleLabel?.font = UIFont.fontAwesome(ofSize: 30, style: .solid)
         buttonDelete.setTitle(String.fontAwesomeIcon(name: .trashAlt), for: .normal)
@@ -275,7 +275,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
             }else {
                 UIViewController.removeSpinner(spinner: loader)
                 let alertWrongUpdate = UIAlertController(title: "Erreur!", message: "Un ou plusieurs champs ne sont pas bien remplis", preferredStyle: UIAlertController.Style.alert)
-                alertWrongUpdate.addAction(UIAlertAction(title: "Ok", style: .default))
+                alertWrongUpdate.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alertWrongUpdate, animated: true, completion: nil)
             }
         }
