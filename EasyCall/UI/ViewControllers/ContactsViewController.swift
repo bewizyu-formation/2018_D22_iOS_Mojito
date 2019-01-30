@@ -181,7 +181,7 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
     
     // MARK: - Table view data source and methods
     func setupFetchedResultController(){
-        
+        let loader = UIViewController.displaySpinner(onView: self.view)
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -199,6 +199,7 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         try? resultController.performFetch()
         
         self.fetchedResultController = resultController
+        UIViewController.removeSpinner(spinner: loader)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -272,7 +273,7 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
     }
     
     func synchroniseWithAPI() {
-       
+        let loader = UIViewController.displaySpinner(onView: self.view)
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -356,8 +357,10 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
                 }
                 
                 try? context.save()
+                UIViewController.removeSpinner(spinner: loader)
             }
         }, onError: { (error) in
+            UIViewController.removeSpinner(spinner: loader)
             DispatchQueue.main.async {
                 switch(error) {
                     case ApiError.InvalidToken:

@@ -105,15 +105,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signInTouch(_ sender: Any) {
-        
-        print("connection")
-        
+        let loader = UIViewController.displaySpinner(onView: self.view)
         if phoneTextField.text?.count == 10 && passwordTextField.text?.count == 4 {
             
             APIClient.instance.login(phone: self.phoneTextField.text!, password: self.passwordTextField.text!, onSuccess: { (token) in
-                print("logged")
                 APIClient.instance.getCurrentUser(token: token, onSuccess: { (userInfo) in
-                    print("get current user")
                     DispatchQueue.main.async {
                         
                         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -148,16 +144,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         try? context.save()
                         
-                        let connectionAlert = UIAlertController(title: "Connexion réussie", message: "Vous etes maintenant connecté", preferredStyle: UIAlertController.Style.alert)
-                        let navigateToLogin = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-                            NotificationCenter.default.post(name: NSNotification.Name("UserLoggedIn"), object: nil)
-                        }
-                        connectionAlert.addAction(navigateToLogin)
-                        self.present(connectionAlert, animated: true, completion: nil)
-                        
-                        
+                        UIViewController.removeSpinner(spinner: loader)
+                        NotificationCenter.default.post(name: NSNotification.Name("UserLoggedIn"), object: nil)
                     }
                 }, onError: { (error) in
+                    UIViewController.removeSpinner(spinner: loader)
                     guard let error = error as? ApiError else {
                         return
                     }
@@ -178,7 +169,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 
             }) { (error) in
-                print(error)
+                UIViewController.removeSpinner(spinner: loader)
                 DispatchQueue.main.async{
                         let alertController = UIAlertController(title: "Erreur de connexion", message: "Numéro de téléphone ou mot de passe incorrect", preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "OK", style: .default ){ action in
