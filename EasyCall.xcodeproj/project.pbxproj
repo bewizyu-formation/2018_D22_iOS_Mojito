@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4B46E08A7A7E427CEF729CC1 /* Pods_EasyCall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDCF276602C4327560A8A0A9 /* Pods_EasyCall.framework */; };
+		5C0C3E172201C66A006D48F9 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C3E162201C66A006D48F9 /* AddContactViewController.swift */; };
+		5C0C3E192201C673006D48F9 /* AddContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0C3E182201C673006D48F9 /* AddContactViewController.xib */; };
 		5C4E831221FF226000BAB37C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E831121FF226000BAB37C /* CreateAccountViewController.swift */; };
 		5C4E831621FF399B00BAB37C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E831521FF399B00BAB37C /* LoginViewController.swift */; };
 		5C4E832021FF600400BAB37C /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E831321FF38E000BAB37C /* CreateAccountViewController.xib */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		041177F13ED01407B70BDCC7 /* Pods-EasyCallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCallTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCallTests/Pods-EasyCallTests.debug.xcconfig"; sourceTree = "<group>"; };
 		504231F2D51ABA0129318BB5 /* Pods-EasyCallTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyCallTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyCallTests/Pods-EasyCallTests.release.xcconfig"; sourceTree = "<group>"; };
+		5C0C3E162201C66A006D48F9 /* AddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		5C0C3E182201C673006D48F9 /* AddContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddContactViewController.xib; sourceTree = "<group>"; };
 		5C4E831121FF226000BAB37C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		5C4E831321FF38E000BAB37C /* CreateAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
 		5C4E831521FF399B00BAB37C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		5CB3F21821F87C4400CAA7F4 /* IB */ = {
 			isa = PBXGroup;
 			children = (
+				5C0C3E182201C673006D48F9 /* AddContactViewController.xib */,
 				5C6EED162200A1E500FE26F0 /* UserSettingsViewController.xib */,
 				7C981F4022004ABB007A2811 /* DetailContactViewController.xib */,
 				5C4E831321FF38E000BAB37C /* CreateAccountViewController.xib */,
@@ -181,6 +186,7 @@
 		5CB3F21A21F87C6100CAA7F4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5C0C3E162201C66A006D48F9 /* AddContactViewController.swift */,
 				5C4E831521FF399B00BAB37C /* LoginViewController.swift */,
 				5C4E831121FF226000BAB37C /* CreateAccountViewController.swift */,
 				5C7EBA3E21FB51E10006D914 /* ContactsViewController.swift */,
@@ -314,6 +320,7 @@
 				5C4E832021FF600400BAB37C /* CreateAccountViewController.xib in Resources */,
 				5C4E832121FF600400BAB37C /* ContactTableViewCell.xib in Resources */,
 				5C4E832321FF600400BAB37C /* LoginViewController.xib in Resources */,
+				5C0C3E192201C673006D48F9 /* AddContactViewController.xib in Resources */,
 				5CC5DDFA2201A250006C384F /* ContactsViewController.xib in Resources */,
 				5CB3F20021F8784300CAA7F4 /* LaunchScreen.storyboard in Resources */,
 				5C6EED182200A1E500FE26F0 /* UserSettingsViewController.xib in Resources */,
@@ -417,6 +424,7 @@
 				7C981F3F22004AB0007A2811 /* DetailContactViewController.swift in Sources */,
 				5C4E831221FF226000BAB37C /* CreateAccountViewController.swift in Sources */,
 				5C7EBA3F21FB51E10006D914 /* ContactsViewController.swift in Sources */,
+				5C0C3E172201C66A006D48F9 /* AddContactViewController.swift in Sources */,
 				5C7949F421F8B0950042263B /* LoginNavigationController.swift in Sources */,
 				7C4BDA8221F8C3E100A661D1 /* ContactTableViewCell.swift in Sources */,
 				5CB3F1F321F8784200CAA7F4 /* AppDelegate.swift in Sources */,

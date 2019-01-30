@@ -34,7 +34,7 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         leftBarButton.image = leftButtonIcon
         self.navigationItem.leftBarButtonItem = leftBarButton
         
-        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(navigateToAddContact))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         self.navigationItem.title = "Mes contacts"
@@ -60,6 +60,11 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    @objc func navigateToAddContact(){
+        let addContactController = AddContactViewController(nibName: "AddContactViewController", bundle: nil)
+        navigationController?.pushViewController(addContactController, animated: true)
     }
     
     @objc func navigateToUserSettings() {

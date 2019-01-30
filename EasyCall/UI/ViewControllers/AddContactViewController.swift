@@ -160,40 +160,40 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     }
     
     func createContact(){
-         if !firstNameTextField.text!.isEmpty && !(lastNameTextField.text?.isEmpty)! && self.isValidEmail(testStr: emailTextField.text ?? "") && phoneTextField.text?.count == 10 {
+        if !firstNameTextField.text!.isEmpty && !(lastNameTextField.text?.isEmpty)! && self.isValidEmail(testStr: emailTextField.text ?? "") && phoneTextField.text?.count == 10 {
             APIClient.instance.createContact(token: userToken, phone: phoneTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!, profile: profileTextField.text!, gravatar: "https://www.gravatar.com/avatar/", isFamilinkUser: isEasyCallUserSwitch.isOn, isEmergencyUser: isEmergencyContactSwitch.isOn, onSuccess: { (contactInfo) in
-                
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                    return
-                }
-                
-                let context = appDelegate.persistentContainer.viewContext
-                
-                let fetchRequest = NSFetchRequest<User>(entityName: "User")
-                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
-                
-                let results = try? context.fetch(fetchRequest)
-                
-                guard let user = results?.first else {
-                    return
-                }
-                let contact = Contact(context: context)
-                contact.email = contactInfo["email"] as? String
-                contact.firstName = contactInfo["firstName"] as? String
-                contact.lastName = contactInfo["lastName"] as? String
-                contact.gravatar = contactInfo["gravatar"] as? String
-                contact.phone = contactInfo["phone"] as? String
-                contact.profile = contactInfo["profile"] as? String
-                contact.serverID = contactInfo["_id"] as? String
-                contact.isEmergencyUser = contactInfo["isEmergencyUser"] as! Bool
-                contact.isFamilinkUser = contactInfo["isFamilinkUser"] as! Bool
-                
-                context.insert(contact)
-                
-                user.addToContacts(contact)
-                
-                try? context.save()
                 DispatchQueue.main.async {
+                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                        return
+                    }
+                    
+                    let context = appDelegate.persistentContainer.viewContext
+                    
+                    let fetchRequest = NSFetchRequest<User>(entityName: "User")
+                    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
+                    
+                    let results = try? context.fetch(fetchRequest)
+                    
+                    guard let user = results?.first else {
+                        return
+                    }
+                    let contact = Contact(context: context)
+                    contact.email = contactInfo["email"] as? String
+                    contact.firstName = contactInfo["firstName"] as? String
+                    contact.lastName = contactInfo["lastName"] as? String
+                    contact.gravatar = contactInfo["gravatar"] as? String
+                    contact.phone = contactInfo["phone"] as? String
+                    contact.profile = contactInfo["profile"] as? String
+                    contact.serverID = contactInfo["_id"] as? String
+                    contact.isEmergencyUser = contactInfo["isEmergencyUser"] as! Bool
+                    contact.isFamilinkUser = contactInfo["isFamilinkUser"] as! Bool
+                    
+                    context.insert(contact)
+                    
+                    user.addToContacts(contact)
+                    
+                    try? context.save()
+                    
                     self.navigationController?.popViewController(animated: true)
                 }
                 
@@ -218,7 +218,7 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
                     self.present(addContactAlert, animated: true, completion: nil)
                 }
             }
-         } else {
+        } else {
             invalidEmailLabel.isHidden = false
             invalidPhoneLabel.isHidden = false
             emptyLastNameLabel.isHidden = false

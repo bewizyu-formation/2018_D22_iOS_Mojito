@@ -166,7 +166,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         }
         
-    }
+    } 
     
     //A décommenter quand les pages existeront
     
@@ -180,12 +180,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func forgotPasswordTouch(_ sender: Any) {
-        /*
-         let vc = ForgotPasswordViewController(
-         nibName: "ForgotPasswordViewController",
+        
+         let vc = AddContactViewController(
+         nibName: "AddContactViewController",
          bundle: nil)
          navigationController?.pushViewController(vc,
-         animated: true)*/
+         animated: true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
