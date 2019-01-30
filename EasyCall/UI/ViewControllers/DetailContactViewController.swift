@@ -36,23 +36,23 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var buttonEdit: UIButton!
     
     
-    @IBOutlet weak var textFieldFirstName: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
     
-    @IBOutlet weak var textFieldLastName: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     
-    @IBOutlet weak var textFieldPhone: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     
-    @IBOutlet weak var labelInvalidPhone: UILabel!
+    @IBOutlet weak var invalidPhoneLabel: UILabel!
     
-    @IBOutlet weak var textFieldMail: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     
-    @IBOutlet weak var labelInvalidMail: UILabel!
+    @IBOutlet weak var invalidEmailLabel: UILabel!
     @IBOutlet weak var labelEmergency: UILabel!
     @IBOutlet weak var switchEmergency: UISwitch!
     
-    @IBOutlet weak var buttonPhone: UIButton!
-    @IBOutlet weak var buttonMail: UIButton!
-    @IBOutlet weak var buttonSMS: UIButton!
+    @IBOutlet weak var phoneButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var smsButton: UIButton!
     
     
     
@@ -61,15 +61,15 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         registerForKeyboardNotifications()
         
-        textFieldFirstName.returnKeyType = .next
-        textFieldLastName.returnKeyType = .next
-        textFieldPhone.returnKeyType = .next
-        textFieldMail.returnKeyType = .next
+        firstNameTextField.returnKeyType = .next
+        lastNameTextField.returnKeyType = .next
+        phoneTextField.returnKeyType = .next
+        emailTextField.returnKeyType = .next
         
-        textFieldFirstName.delegate = self
-        textFieldLastName.delegate = self
-        textFieldPhone.delegate = self
-        textFieldMail.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        phoneTextField.delegate = self
+        emailTextField.delegate = self
 
         
         profilePicker = UIPickerView()
@@ -88,14 +88,14 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         buttonDelete.setTitle(String.fontAwesomeIcon(name: .trashAlt), for: .normal)
         
         
-        buttonSMS.titleLabel?.font = UIFont.fontAwesome(ofSize: 60, style: .solid)
-        buttonSMS.setTitle(String.fontAwesomeIcon(name: .sms), for: .normal)
+        smsButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 60, style: .solid)
+        smsButton.setTitle(String.fontAwesomeIcon(name: .sms), for: .normal)
         
-        buttonMail.titleLabel?.font = UIFont.fontAwesome(ofSize: 60, style: .solid)
-        buttonMail.setTitle(String.fontAwesomeIcon(name: .envelope), for: .normal)
+        emailButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 60, style: .solid)
+        emailButton.setTitle(String.fontAwesomeIcon(name: .envelope), for: .normal)
         
-        buttonPhone.titleLabel?.font = UIFont.fontAwesome(ofSize: 60, style: .solid)
-        buttonPhone.setTitle(String.fontAwesomeIcon(name: .phoneSquare), for: .normal)
+        phoneButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 60, style: .solid)
+        phoneButton.setTitle(String.fontAwesomeIcon(name: .phoneSquare), for: .normal)
         
         if let url = URL(string: contact?.gravatar ?? "") {
             DispatchQueue.global().async {
@@ -177,10 +177,10 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     */
     
     func initContactValues(){
-        textFieldFirstName.text = contact.firstName
-        textFieldLastName.text = contact.lastName
-        textFieldPhone.text = contact.phone
-        textFieldMail.text = contact.email
+        firstNameTextField.text = contact.firstName
+        lastNameTextField.text = contact.lastName
+        phoneTextField.text = contact.phone
+        emailTextField.text = contact.email
         profileTextField.text = contact.profile
         if contact.isEmergencyUser == true {
             switchEmergency.isOn = true
@@ -193,10 +193,10 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         isEditMode = false
         buttonEdit.titleLabel?.font = UIFont.fontAwesome(ofSize: 30, style: .solid)
         buttonEdit.setTitle(String.fontAwesomeIcon(name: .pencilAlt), for: .normal)
-        textFieldFirstName.isEnabled = false
-        textFieldLastName.isEnabled = false
-        textFieldPhone.isEnabled = false
-        textFieldMail.isEnabled = false
+        firstNameTextField.isEnabled = false
+        lastNameTextField.isEnabled = false
+        phoneTextField.isEnabled = false
+        emailTextField.isEnabled = false
         profileTextField.isEnabled = false
         switchEmergency.isEnabled = false
     }
@@ -205,10 +205,10 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         isEditMode = true
         buttonEdit.titleLabel?.font = UIFont.fontAwesome(ofSize: 30, style: .solid)
         buttonEdit.setTitle(String.fontAwesomeIcon(name: .save), for: .normal)
-        textFieldFirstName.isEnabled = true
-        textFieldLastName.isEnabled = true
-        textFieldPhone.isEnabled = true
-        textFieldMail.isEnabled = true
+        firstNameTextField.isEnabled = true
+        lastNameTextField.isEnabled = true
+        phoneTextField.isEnabled = true
+        emailTextField.isEnabled = true
         profileTextField.isEnabled = true
         switchEmergency.isEnabled = true
     }
@@ -231,16 +231,16 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
             enterInEditMode()
         }else {
             
-            guard let phoneNumber = textFieldPhone.text else {
+            guard let phoneNumber = phoneTextField.text else {
                 return
             }
-            guard let firstName = textFieldFirstName.text else {
+            guard let firstName = firstNameTextField.text else {
                 return
             }
-            guard let lastName = textFieldLastName.text else {
+            guard let lastName = lastNameTextField.text else {
                 return
             }
-            guard let mail = textFieldMail.text else {
+            guard let mail = emailTextField.text else {
                 return
             }
             
@@ -343,19 +343,19 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     @IBAction func onEditingPhone(_ sender: UITextField) {
         if sender.text?.count ?? 0 == 10 {
-            labelInvalidPhone.isHidden = true
+            invalidPhoneLabel.isHidden = true
         } else if sender.text?.count ?? 0 < 10 {
-            labelInvalidPhone.isHidden = false
+            invalidPhoneLabel.isHidden = false
         } else {
-            labelInvalidPhone.isHidden = false
+            invalidPhoneLabel.isHidden = false
         }
     }
 
     @IBAction func onEditingMail(_ sender: UITextField) {
         if self.isValidEmail(testStr: sender.text ?? ""){
-            labelInvalidMail.isHidden = true
+            invalidEmailLabel.isHidden = true
         } else {
-            labelInvalidMail.isHidden = false
+            invalidEmailLabel.isHidden = false
         }
     }
     
@@ -387,7 +387,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         var aRect = self.view.frame;
         aRect.size.height -= kbSize.height;
         
-        let activeField: UITextField? = [textFieldFirstName, textFieldLastName, textFieldPhone, textFieldMail, textFieldFirstName].first { $0.isFirstResponder }
+        let activeField: UITextField? = [firstNameTextField, lastNameTextField, phoneTextField, emailTextField, firstNameTextField].first { $0.isFirstResponder }
         if let activeField = activeField {
             if aRect.contains(activeField.frame.origin) {
                 let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
@@ -399,6 +399,11 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     @objc func onKeyboardDisappear(_ notification: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+        return true
     }
     
     /*

@@ -14,20 +14,20 @@
             <connections>
                 <outlet property="buttonDelete" destination="d6H-MH-NSy" id="rGg-xG-ahw"/>
                 <outlet property="buttonEdit" destination="v1O-zF-yJc" id="AiE-G5-O2L"/>
-                <outlet property="buttonMail" destination="o4Y-oR-fGk" id="5fY-nZ-a8q"/>
-                <outlet property="buttonPhone" destination="Qmk-hi-B3E" id="DUo-Jh-fFh"/>
-                <outlet property="buttonSMS" destination="jYu-dT-Xbl" id="7Pl-fg-jlR"/>
+                <outlet property="emailButton" destination="o4Y-oR-fGk" id="5fY-nZ-a8q"/>
+                <outlet property="emailTextField" destination="jzO-nd-oFP" id="FkM-nJ-mjR"/>
+                <outlet property="firstNameTextField" destination="GBU-Ow-CoX" id="7ah-5P-XnD"/>
                 <outlet property="imageViewGravatar" destination="XP7-LW-r5E" id="cab-4I-KMH"/>
+                <outlet property="invalidEmailLabel" destination="Q16-66-v5l" id="6Oz-xx-6Z3"/>
+                <outlet property="invalidPhoneLabel" destination="ijc-SW-Zpr" id="sLr-fY-fXj"/>
                 <outlet property="labelEmergency" destination="KU5-p5-SRc" id="QRi-Qa-UzM"/>
-                <outlet property="labelInvalidMail" destination="Q16-66-v5l" id="6Oz-xx-6Z3"/>
-                <outlet property="labelInvalidPhone" destination="ijc-SW-Zpr" id="sLr-fY-fXj"/>
+                <outlet property="lastNameTextField" destination="30q-4V-83z" id="zlf-jX-Jtm"/>
+                <outlet property="phoneButton" destination="Qmk-hi-B3E" id="DUo-Jh-fFh"/>
+                <outlet property="phoneTextField" destination="OSv-r4-UAC" id="jK3-9r-vfL"/>
                 <outlet property="profileTextField" destination="BXV-HO-QO9" id="rRN-Ba-zRO"/>
                 <outlet property="scrollView" destination="rJ8-bt-vBP" id="f7g-hr-Nti"/>
+                <outlet property="smsButton" destination="jYu-dT-Xbl" id="7Pl-fg-jlR"/>
                 <outlet property="switchEmergency" destination="a6Q-Yl-9dL" id="7ci-LY-UW0"/>
-                <outlet property="textFieldFirstName" destination="GBU-Ow-CoX" id="7ah-5P-XnD"/>
-                <outlet property="textFieldLastName" destination="30q-4V-83z" id="zlf-jX-Jtm"/>
-                <outlet property="textFieldMail" destination="jzO-nd-oFP" id="FkM-nJ-mjR"/>
-                <outlet property="textFieldPhone" destination="OSv-r4-UAC" id="jK3-9r-vfL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -129,7 +129,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                     <connections>
                                                         <action selector="onEditingPhone:" destination="-1" eventType="editingChanged" id="fkW-NM-rCK"/>
                                                     </connections>
