@@ -27,14 +27,15 @@ platform :ios do
     gym(
       scheme: "EasyCall",
       configuration: "Release",
-      project: './EasyCall.xcodeproj',
+      workspace: './EasyCall.xcworkspace',
       clean: true,
       codesigning_identity: 'iPhone Developer: Vincent Leroux (Y5QP7SF5V6)',
       export_method: 'development'
     )
     swiftlint(
     mode: :lint,                            # SwiftLint mode: :lint (default) or :autocorrect
-    strict: false                           # Fail on warnings? (Default: false)
+    strict: false,
+    ignore_exit_status: true                        # Fail on warnings? (Default: false)
 )
   end
 end
