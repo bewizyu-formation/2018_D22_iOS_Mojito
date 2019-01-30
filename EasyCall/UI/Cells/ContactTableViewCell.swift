@@ -24,17 +24,22 @@ class ContactTableViewCell: UITableViewCell {
         self.imageViewGravatar.layer.cornerRadius = 5
         buttonPhone.titleLabel?.font = UIFont.fontAwesome(ofSize: 40, style: .solid)
         buttonPhone.setTitle(String.fontAwesomeIcon(name: .phone), for: .normal)
-        //buttonPhone. = EasyCallStyle.colorSecondary
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    @IBAction func tapToCall(_ sender: Any) {
-        print("calling " + self.contactPhoneNumber)
+    @IBAction func tapToCall(_ sender: UIButton) {
+        UIButton.animate(withDuration: 0.2,
+             animations: {
+                sender.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        },
+             completion: { finish in
+                UIButton.animate(withDuration: 0.2, animations: {
+                    sender.transform = CGAffineTransform.identity
+                })
+        })
         open(scheme: "tel:\(self.contactPhoneNumber!)")
     }
     

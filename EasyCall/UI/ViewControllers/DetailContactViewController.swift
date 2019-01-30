@@ -226,11 +226,20 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     
-    @IBAction func onEditTap(_ sender: Any) {
+    @IBAction func onEditTap(_ sender: UIButton) {
+        UIButton.animate(withDuration: 0.2,
+             animations: {
+                sender.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        },
+             completion: { finish in
+                UIButton.animate(withDuration: 0.2, animations: {
+                    sender.transform = CGAffineTransform.identity
+                })
+        })
         if isEditMode == false {
             enterInEditMode()
         }else {
-            
+            let loader = UIViewController.displaySpinner(onView: self.view)
             guard let phoneNumber = phoneTextField.text else {
                 return
             }
@@ -254,15 +263,17 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
                 
                 APIClient.instance.updateContact(token: user.token!, id: contact.serverID!, phone: phoneNumber, firstName: firstName, lastName: lastName, email: mail, profile: valueSelected ?? "Famille", gravatar: contact.gravatar!, isFamilinkUser: false, isEmergencyUser: emergency, onSuccess: {
                     DispatchQueue.main.async {
-                        self.present(self.alertValidUpdate, animated: true, completion: nil)
                         self.leaveEditMode()
+                        UIViewController.removeSpinner(spinner: loader)
                     }
                 }) { (Error) in
                     DispatchQueue.main.async {
+                        UIViewController.removeSpinner(spinner: loader)
                         self.present(self.alertNoConnection, animated: true, completion: nil)
                     }
                 }
             }else {
+                UIViewController.removeSpinner(spinner: loader)
                 let alertWrongUpdate = UIAlertController(title: "Erreur!", message: "Un ou plusieurs champs ne sont pas bien remplis", preferredStyle: UIAlertController.Style.alert)
                 alertWrongUpdate.addAction(UIAlertAction(title: "Ok", style: .default))
                 self.present(alertWrongUpdate, animated: true, completion: nil)
