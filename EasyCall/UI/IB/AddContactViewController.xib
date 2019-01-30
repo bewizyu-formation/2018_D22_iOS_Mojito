@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddContactViewController" customModule="EasyCall" customModuleProvider="target">
             <connections>
+                <outlet property="buttonAddContact" destination="eYi-27-Vu7" id="xmf-eo-Nn9"/>
                 <outlet property="emailTextField" destination="SEd-9d-5V5" id="l3f-05-9fQ"/>
                 <outlet property="emptyFirstNameLabel" destination="CId-TS-PQQ" id="Uop-gd-Dyi"/>
                 <outlet property="emptyLastNameLabel" destination="SGB-XW-48E" id="Sfg-Bn-Hvk"/>
@@ -36,7 +37,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="ODh-HZ-3Gt">
-                            <rect key="frame" x="15" y="0.0" width="345" height="504.5"/>
+                            <rect key="frame" x="15" y="15" width="345" height="516.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="wyF-ci-KkM">
                                     <rect key="frame" x="0.0" y="0.0" width="345" height="360.5"/>
@@ -147,7 +148,7 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="7MI-TP-hlU">
-                                    <rect key="frame" x="0.0" y="386.5" width="345" height="118"/>
+                                    <rect key="frame" x="0.0" y="386.5" width="345" height="130"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sbG-Fk-VAD">
                                             <rect key="frame" x="0.0" y="0.0" width="345" height="31"/>
@@ -180,8 +181,9 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYi-27-Vu7">
-                                            <rect key="frame" x="0.0" y="88" width="345" height="30"/>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="0.0" y="88" width="345" height="42"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <state key="normal" title="Créer le contact">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
@@ -209,7 +211,7 @@
                         <constraint firstItem="ODh-HZ-3Gt" firstAttribute="centerX" secondItem="HKa-Qw-lxN" secondAttribute="centerX" id="Teh-nT-diU"/>
                         <constraint firstAttribute="trailing" secondItem="ODh-HZ-3Gt" secondAttribute="trailing" constant="15" id="X1k-P7-znk"/>
                         <constraint firstAttribute="bottom" secondItem="ODh-HZ-3Gt" secondAttribute="bottom" constant="15" id="iOf-Il-66U"/>
-                        <constraint firstItem="ODh-HZ-3Gt" firstAttribute="top" secondItem="HKa-Qw-lxN" secondAttribute="top" id="mTr-DU-UFt"/>
+                        <constraint firstItem="ODh-HZ-3Gt" firstAttribute="top" secondItem="HKa-Qw-lxN" secondAttribute="top" constant="15" id="mTr-DU-UFt"/>
                         <constraint firstItem="ODh-HZ-3Gt" firstAttribute="leading" secondItem="HKa-Qw-lxN" secondAttribute="leading" constant="15" id="r7K-PU-uPb"/>
                     </constraints>
                 </scrollView>

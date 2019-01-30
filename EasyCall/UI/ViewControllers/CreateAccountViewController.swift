@@ -25,12 +25,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
     @IBOutlet weak var wrongPasswordLabel: UILabel!
     @IBOutlet weak var wrondConfirmPasswordLabel: UILabel!
     @IBOutlet weak var invalidEmailLabel: UILabel!
+    @IBOutlet weak var buttonSignUp: UIButton!
     
     var pickerData: [String] = [String]()
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-      
         self.title = "Inscription"
         
         registerForKeyboardNotifications()
@@ -50,6 +50,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
         emailTextField.delegate = self
         profilePickerView.delegate = self
         
+        buttonSignUp.setTitleColor(EasyCallStyle.colorPrimary, for: .normal)
         
         passwordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true

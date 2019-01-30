@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateAccountViewController" customModule="EasyCall" customModuleProvider="target">
             <connections>
+                <outlet property="buttonSignUp" destination="u4B-BV-OFH" id="gRA-V7-HhJ"/>
                 <outlet property="confirmPasswordTextField" destination="gEi-Gx-fvS" id="c3A-qM-6sl"/>
                 <outlet property="emailTextField" destination="fuk-0s-x27" id="Exg-1r-Q7i"/>
                 <outlet property="firstNameTextField" destination="Tfi-JA-t0E" id="cYY-Ut-5J3"/>
@@ -166,7 +167,7 @@
                                         </pickerView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4B-BV-OFH">
                                             <rect key="frame" x="0.0" y="150" width="290" height="45"/>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="Ske-93-he8"/>
                                             </constraints>

@@ -14,8 +14,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var loginView: UIView!
     @IBOutlet weak var mainScrollViewBottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var phoneInput: UITextField!
-    @IBOutlet weak var passwordInput: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -30,38 +30,66 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Connexion"
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        
-        notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
         
         phoneErrorLabel.isHidden = true
         passwordErrorLabel.isHidden = true
         
-        phoneInput.delegate = self
-        passwordInput.delegate = self
+        forgotPasswordButton.setTitleColor(EasyCallStyle.colorPrimary, for: .normal)
+        signInButton.backgroundColor = EasyCallStyle.colorPrimary
+        signUpButton.backgroundColor = EasyCallStyle.colorSecondary
+        
+        phoneTextField.delegate = self
+        passwordTextField.delegate = self
         
         //Remplacer "empty.png" par le logo
         let imageLogo = UIImage(named: "empty.png")
         logo.image = imageLogo
         
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        let userInfo = (notification as NSNotification).userInfo!
-        let keyboardHeight =  (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        registerForKeyboardNotifications()
         
-        mainScrollViewBottomConstraint.constant = -keyboardHeight.height/3
     }
     
-    @objc func keyboardWillHide(_ notification: Notification) {
-        mainScrollViewBottomConstraint.constant = 0
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name:UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    // Don't forget to unregister when done
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    @objc func onKeyboardAppear(_ notification: NSNotification) {
+        let info = notification.userInfo!
+        let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+        let kbSize = rect.size
+        
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
+        
+        // If active text field is hidden by keyboard, scroll it so it's visible
+        // Your application might not need or want this behavior.
+        var aRect = self.view.frame;
+        aRect.size.height -= kbSize.height;
+        
+        let activeField: UITextField? = [phoneTextField, passwordTextField].first { $0.isFirstResponder }
+        if let activeField = activeField {
+            if aRect.contains(activeField.frame.origin) {
+                let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
+                scrollView.setContentOffset(scrollPoint, animated: true)
+            }
+        }
+    }
+    
+    @objc func onKeyboardDisappear(_ notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
     
     @IBAction func onPhoneValueChange(_ sender: Any) {
-        if phoneInput.text?.count != 10 {
+        if phoneTextField.text?.count != 10 {
             phoneErrorLabel.isHidden = false
         }else{
             phoneErrorLabel.isHidden = true
@@ -69,22 +97,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onPasswordValueChange(_ sender: Any) {
-        if passwordInput.text?.count != 4 {
+        if passwordTextField.text?.count != 4 {
             passwordErrorLabel.isHidden = false
         }else{
             passwordErrorLabel.isHidden = true
         }
     }
     
-   
-    
     @IBAction func signInTouch(_ sender: Any) {
         
         print("connection")
         
-        if phoneInput.text?.count == 10 && passwordInput.text?.count == 4 {
+        if phoneTextField.text?.count == 10 && passwordTextField.text?.count == 4 {
             
-            APIClient.instance.login(phone: self.phoneInput.text!, password: self.passwordInput.text!, onSuccess: { (token) in
+            APIClient.instance.login(phone: self.phoneTextField.text!, password: self.passwordTextField.text!, onSuccess: { (token) in
                 print("logged")
                 APIClient.instance.getCurrentUser(token: token, onSuccess: { (userInfo) in
                     print("get current user")
@@ -181,19 +207,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func forgotPasswordTouch(_ sender: Any) {
         
-         let vc = AddContactViewController(
-         nibName: "AddContactViewController",
-         bundle: nil)
-         navigationController?.pushViewController(vc,
-         animated: true)
+        let alertForgotPassword = UIAlertController(title: "Problème de mémoire ?", message: "IL NE FAUT JAMAIS OUBLIER SON MOT DE PASSE !", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default ){ action in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertForgotPassword.addAction(okAction)
+        self.present(alertForgotPassword, animated: true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         var nextTextField: UITextField?
         
         switch textField {
-        case phoneInput:
-            nextTextField = passwordInput
+        case phoneTextField:
+            nextTextField = passwordTextField
         default:
             textField.resignFirstResponder()
         }
@@ -207,10 +234,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-    
-    /*@objc func doneClicked() {
-        view.endEditing(true)
-    }*/
-
 }
 

@@ -23,6 +23,8 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     @IBOutlet weak var emptyFirstNameLabel: UILabel!
     @IBOutlet weak var invalidPhoneLabel: UILabel!
     @IBOutlet weak var invalidEmailLabel: UILabel!
+    @IBOutlet weak var buttonAddContact: UIButton!
+    
     var userToken : String!
     var profilePicker: UIPickerView!
     var pickerData: [String] = [String]()
@@ -46,6 +48,8 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
         profilePicker = UIPickerView()
         profilePicker.delegate = self
         profileTextField.inputView = profilePicker
+        
+        buttonAddContact.backgroundColor = EasyCallStyle.colorPrimary
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
