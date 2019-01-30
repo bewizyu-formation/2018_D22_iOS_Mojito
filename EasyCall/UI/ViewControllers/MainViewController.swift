@@ -56,8 +56,11 @@ class MainViewController: UIViewController {
                 contactsNavigationController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
                 ])
             contactsNavigationController.didMove(toParent: self)
+            contactsNavigationController.view.alpha = 0
             contactsNavigationController.view.isHidden = false
-            
+            UIView.animate(withDuration: 1.5) {
+                self.contactsNavigationController.view.alpha = 1
+            }
             loginNavigationController.view.isHidden = true
         } else {
             
@@ -72,8 +75,13 @@ class MainViewController: UIViewController {
                 ])
             loginNavigationController.didMove(toParent: self)
             
-            contactsNavigationController.view.isHidden = true
+            
+            loginNavigationController.view.alpha = 0
             loginNavigationController.view.isHidden = false
+            UIView.animate(withDuration: 1.5) {
+                self.loginNavigationController.view.alpha = 1
+            }
+            contactsNavigationController.view.isHidden = true
         }
     }
     
