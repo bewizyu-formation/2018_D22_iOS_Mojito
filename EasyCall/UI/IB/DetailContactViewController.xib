@@ -19,13 +19,15 @@
                 <outlet property="buttonSMS" destination="jYu-dT-Xbl" id="7Pl-fg-jlR"/>
                 <outlet property="imageViewGravatar" destination="XP7-LW-r5E" id="cab-4I-KMH"/>
                 <outlet property="labelEmergency" destination="KU5-p5-SRc" id="QRi-Qa-UzM"/>
+                <outlet property="labelInvalidMail" destination="Q16-66-v5l" id="6Oz-xx-6Z3"/>
+                <outlet property="labelInvalidPhone" destination="ijc-SW-Zpr" id="sLr-fY-fXj"/>
                 <outlet property="profileTextField" destination="BXV-HO-QO9" id="rRN-Ba-zRO"/>
-                <outlet property="scrollView" destination="rJ8-bt-vBP" id="if3-b0-wET"/>
-                <outlet property="skyFloatingTextFieldFirstName" destination="GBU-Ow-CoX" id="hxL-pc-JOd"/>
-                <outlet property="skyFloatingTextFieldLastName" destination="30q-4V-83z" id="DWa-Sx-DK6"/>
-                <outlet property="skyFloatingTextFieldMail" destination="jzO-nd-oFP" id="7uS-e8-8og"/>
-                <outlet property="skyFloatingTextFieldPhone" destination="OSv-r4-UAC" id="IMg-HY-ebl"/>
+                <outlet property="scrollView" destination="rJ8-bt-vBP" id="f7g-hr-Nti"/>
                 <outlet property="switchEmergency" destination="a6Q-Yl-9dL" id="7ci-LY-UW0"/>
+                <outlet property="textFieldFirstName" destination="GBU-Ow-CoX" id="7ah-5P-XnD"/>
+                <outlet property="textFieldLastName" destination="30q-4V-83z" id="zlf-jX-Jtm"/>
+                <outlet property="textFieldMail" destination="jzO-nd-oFP" id="FkM-nJ-mjR"/>
+                <outlet property="textFieldPhone" destination="OSv-r4-UAC" id="jK3-9r-vfL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,21 +52,21 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="93.5" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="onTapSMSButton:" destination="-1" eventType="touchUpInside" id="Ndy-Am-ktO"/>
+                                                        <action selector="onSMSTap:" destination="-1" eventType="touchUpInside" id="rcc-0y-MLF"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4Y-oR-fGk">
                                                     <rect key="frame" x="93.5" y="0.0" width="93" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="onTapButtonMail:" destination="-1" eventType="touchUpInside" id="ZIW-iI-k2x"/>
+                                                        <action selector="onMailTap:" destination="-1" eventType="touchUpInside" id="OHD-lG-ODP"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qmk-hi-B3E">
                                                     <rect key="frame" x="186.5" y="0.0" width="93.5" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="onTapCallButton:" destination="-1" eventType="touchUpInside" id="a3d-f4-s54"/>
+                                                        <action selector="onCallTap:" destination="-1" eventType="touchUpInside" id="4iF-HH-2kP"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -91,14 +93,14 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="onTapDeleteButton:" destination="-1" eventType="touchUpInside" id="6E6-aT-iQt"/>
+                                                        <action selector="onDeleteTap:" destination="-1" eventType="touchUpInside" id="2tD-DD-vZS"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1O-zF-yJc">
                                                     <rect key="frame" x="165" y="0.0" width="115" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="onTapEditButton:" destination="-1" eventType="touchUpInside" id="y3O-Cw-bDd"/>
+                                                        <action selector="onEditTap:" destination="-1" eventType="touchUpInside" id="kod-jz-I4L"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -106,93 +108,61 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Zhr-mQ-amZ">
                                             <rect key="frame" x="0.0" y="222" width="280" height="30"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBU-Ow-CoX" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBU-Ow-CoX">
                                                     <rect key="frame" x="0.0" y="0.0" width="132.5" height="30"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                                            <color key="value" red="0.5568627451" green="0.72156862749999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom de famille" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="30q-4V-83z" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom de famille" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="30q-4V-83z">
                                                     <rect key="frame" x="147.5" y="0.0" width="132.5" height="30"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                                            <color key="value" red="0.5568627451" green="0.72156862749999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="s7N-by-iVo">
                                             <rect key="frame" x="0.0" y="265" width="280" height="30"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Numéro de téléphone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OSv-r4-UAC" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Numéro de téléphone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OSv-r4-UAC">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                                            <color key="value" red="0.5568627451" green="0.72156862749999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="onPhoneEditingChanged:" destination="-1" eventType="editingChanged" id="r5H-t1-3SZ"/>
+                                                        <action selector="onEditingPhone:" destination="-1" eventType="editingChanged" id="fkW-NM-rCK"/>
                                                     </connections>
                                                 </textField>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le numéro doit faire 10 chiffres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijc-SW-Zpr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XeJ-Og-UF2">
                                             <rect key="frame" x="0.0" y="308" width="280" height="30"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzO-nd-oFP" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzO-nd-oFP">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" searchField="YES"/>
                                                     </accessibility>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                                            <color key="value" red="0.5568627451" green="0.72156862749999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="onMailEditingChanged:" destination="-1" eventType="editingChanged" id="NoB-T6-U0N"/>
+                                                        <action selector="onEditingMail:" destination="-1" eventType="editingChanged" id="U0m-my-i5f"/>
                                                     </connections>
                                                 </textField>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le mail n'est pas valide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q16-66-v5l">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lEa-Vr-H3T">
