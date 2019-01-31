@@ -20,19 +20,21 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var profilePickerView: UIPickerView!
     @IBOutlet weak var invalidPhoneLabel: UILabel!
     @IBOutlet weak var wrongPasswordLabel: UILabel!
     @IBOutlet weak var wrondConfirmPasswordLabel: UILabel!
     @IBOutlet weak var invalidEmailLabel: UILabel!
     @IBOutlet weak var buttonSignUp: UIButton!
+    @IBOutlet weak var profileTextField: UITextField!
     
+    var profilePicker: UIPickerView!
     var pickerData: [String] = [String]()
     open override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Inscription"
-        
+        profilePicker = UIPickerView()
+        profilePicker.delegate = self
         registerForKeyboardNotifications()
         
         firstNameTextField.returnKeyType = .next
@@ -48,7 +50,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
         emailTextField.delegate = self
-        profilePickerView.delegate = self
+        profileTextField.delegate = self
+        profileTextField.inputView = profilePicker
         
         buttonSignUp.setTitleColor(EasyCallStyle.colorPrimary, for: .normal)
         
@@ -63,7 +66,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
             self.pickerData = profiles
             UIViewController.removeSpinner(spinner: loader)
             DispatchQueue.main.async {
-                self.profilePickerView.reloadComponent(0)
+                self.profilePicker.reloadComponent(0)
             }
         }, onError: { (error) in
             UIViewController.removeSpinner(spinner: loader)
@@ -99,7 +102,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
         var aRect = self.view.frame;
         aRect.size.height -= kbSize.height;
         
-        let activeField: UITextField? = [firstNameTextField, lastNameTextField, phoneTextField, passwordTextField, confirmPasswordTextField, emailTextField].first { $0.isFirstResponder }
+        let activeField: UITextField? = [firstNameTextField, lastNameTextField, phoneTextField, passwordTextField, confirmPasswordTextField, emailTextField, profileTextField].first { $0.isFirstResponder }
         if let activeField = activeField {
             if aRect.contains(activeField.frame.origin) {
                 let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
@@ -189,7 +192,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
         let loader = UIViewController.displaySpinner(onView: self.view)
         if !firstNameTextField.text!.isEmpty && !(lastNameTextField.text?.isEmpty)! && passwordTextField.text == confirmPasswordTextField.text && self.isValidEmail(testStr: emailTextField.text ?? "") && phoneTextField.text?.count == 10 {
             
-            APIClient.instance.createUser(phone: self.phoneTextField.text!,password: self.passwordTextField.text!, firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.emailTextField.text!, profile: self.pickerData[self.profilePickerView.selectedRow(inComponent: 0)], onSuccess: { (userInfo) in
+            APIClient.instance.createUser(phone: self.phoneTextField.text!,password: self.passwordTextField.text!, firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: self.emailTextField.text!, profile: self.pickerData[self.profilePicker.selectedRow(inComponent: 0)], onSuccess: { (userInfo) in
                 DispatchQueue.main.async {
                     UIViewController.removeSpinner(spinner: loader)
                     let creationAlert = UIAlertController(title: "Création réussie", message: "L'utilisateur " + userInfo[1] + " a bien été créé", preferredStyle: UIAlertController.Style.alert)
