@@ -53,8 +53,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
         profileTextField.delegate = self
         profileTextField.inputView = profilePicker
         
-        buttonSignUp.setTitleColor(EasyCallStyle.colorPrimary, for: .normal)
-        
+        buttonSignUp.setTitleColor(UIColor.white, for: .normal)
+        buttonSignUp.backgroundColor = EasyCallStyle.colorPrimary
         passwordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
         
@@ -248,6 +248,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, UIPick
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        profileTextField.text = pickerData[row]
+        profileTextField.resignFirstResponder()
     }
     
 }

@@ -169,10 +169,10 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jj4-B4-xDc">
-                                    <rect key="frame" x="95.5" y="457.5" width="99" height="45"/>
+                                    <rect key="frame" x="0.0" y="457.5" width="290" height="45"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4B-BV-OFH">
-                                            <rect key="frame" x="0.0" y="0.0" width="99" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="Ske-93-he8"/>
@@ -187,10 +187,13 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="u4B-BV-OFH" firstAttribute="width" secondItem="jj4-B4-xDc" secondAttribute="width" id="8o0-JS-X7v"/>
+                                        <constraint firstItem="u4B-BV-OFH" firstAttribute="width" secondItem="jj4-B4-xDc" secondAttribute="width" id="4kB-ft-jep"/>
                                     </constraints>
                                 </stackView>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="jj4-B4-xDc" firstAttribute="width" secondItem="9kl-H5-2Eq" secondAttribute="width" id="EqF-Fw-AGI"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <constraints>
