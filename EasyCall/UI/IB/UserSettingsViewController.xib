@@ -19,6 +19,7 @@
                 <outlet property="lastNameTextField" destination="6MC-W0-HuS" id="kfG-Mh-kKy"/>
                 <outlet property="logoutButton" destination="kEh-kX-Mba" id="qt2-k9-Kyp"/>
                 <outlet property="profileTextField" destination="5bH-oj-Y7A" id="reB-Vm-xWS"/>
+                <outlet property="scrollView" destination="guy-p3-HsS" id="7Wc-oo-bz2"/>
                 <outlet property="validateAndCancelStackView" destination="Hmz-ui-yzE" id="Xsr-x5-GU8"/>
                 <outlet property="validateButton" destination="6pq-O1-CYf" id="Ehh-Sl-yyY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="720-Av-230"/>

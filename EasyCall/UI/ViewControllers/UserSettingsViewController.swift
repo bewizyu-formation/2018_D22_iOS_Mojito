@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     
     
@@ -17,6 +17,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var validateButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var validateAndCancelStackView: UIStackView!
     @IBOutlet weak var profileTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -29,6 +30,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
         super.viewDidLoad()
         
         self.title = "Mon compte"
+        registerForKeyboardNotifications()
         
         profilePicker = UIPickerView()
         profilePicker.delegate = self
@@ -54,6 +56,15 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
         emailTextField.text = user.email
         userToken = user.token
         
+        firstNameTextField.returnKeyType = .next
+        lastNameTextField.returnKeyType = .next
+        emailTextField.returnKeyType = .next
+        
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        emailTextField.delegate = self
+        profileTextField.delegate = self
+        
         self.editButton.backgroundColor = EasyCallStyle.colorPrimary
         self.cancelButton.backgroundColor = EasyCallStyle.colorPrimary
         self.validateButton.backgroundColor = EasyCallStyle.colorPrimary
@@ -75,6 +86,45 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
             self.present(loadProfilesFailedAlert, animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
         })
+    }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name:UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    // Don't forget to unregister when done
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    @objc func onKeyboardAppear(_ notification: NSNotification) {
+        let info = notification.userInfo!
+        let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+        let kbSize = rect.size
+        
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
+        
+        // If active text field is hidden by keyboard, scroll it so it's visible
+        // Your application might not need or want this behavior.
+        var aRect = self.view.frame;
+        aRect.size.height -= kbSize.height;
+        
+        let activeField: UITextField? = [firstNameTextField, lastNameTextField, emailTextField, profileTextField].first { $0.isFirstResponder }
+        if let activeField = activeField {
+            if aRect.contains(activeField.frame.origin) {
+                let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
+                scrollView.setContentOffset(scrollPoint, animated: true)
+            }
+        }
+    }
+    
+    @objc func onKeyboardDisappear(_ notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
@@ -244,5 +294,29 @@ class UserSettingsViewController: UIViewController, UIPickerViewDelegate, UIPick
         context.insert(user)
         
         try? context.save()
-    }    
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        var nextTextField: UITextField?
+        
+        switch textField {
+        case lastNameTextField:
+            nextTextField = firstNameTextField
+        case firstNameTextField:
+            nextTextField = emailTextField
+        case emailTextField:
+            nextTextField = profileTextField
+        default:
+            textField.resignFirstResponder()
+        }
+        
+        guard let nextResponder = nextTextField else {
+            return true
+        }
+        
+        nextResponder.becomeFirstResponder()
+        scrollView.scrollRectToVisible(nextResponder.frame, animated: true)
+        
+        return true
+    }
 }
