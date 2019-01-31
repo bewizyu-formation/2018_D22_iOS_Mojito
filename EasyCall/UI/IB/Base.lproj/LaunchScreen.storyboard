@@ -17,13 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launcherImage" translatesAutoresizingMaskIntoConstraints="NO" id="xaD-Kj-Xbv">
+                                <rect key="frame" x="30" y="190" width="315" height="307"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xaD-Kj-Xbv" secondAttribute="trailing" constant="30" id="1Ej-xm-mnc"/>
+                            <constraint firstItem="xaD-Kj-Xbv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="68T-N1-h4c"/>
+                            <constraint firstItem="xaD-Kj-Xbv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="170" id="chO-O8-g4h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xaD-Kj-Xbv" secondAttribute="bottom" constant="170" id="ndF-0A-1uB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launcherImage" width="417" height="417"/>
+    </resources>
 </document>

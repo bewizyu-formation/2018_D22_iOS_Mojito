@@ -42,8 +42,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         //Remplacer "empty.png" par le logo
-        let imageLogo = UIImage(named: "empty.png")
-        logo.image = imageLogo
         
         registerForKeyboardNotifications()
         
