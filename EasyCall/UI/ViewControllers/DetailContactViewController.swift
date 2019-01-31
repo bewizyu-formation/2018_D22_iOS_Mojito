@@ -314,7 +314,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         }))
         
         alertConfirmDelete.addAction(UIAlertAction(title: "Ne pas supprimer", style: .cancel, handler: { (action: UIAlertAction!) in
-            print("suppresion annulée")
+            UIViewController.removeSpinner(spinner: loader)
         }))
         present(alertConfirmDelete, animated: true, completion: nil)
     }
