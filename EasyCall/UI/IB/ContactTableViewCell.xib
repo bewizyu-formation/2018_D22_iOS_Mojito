@@ -20,16 +20,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Q2C-Ne-X3o">
-                        <rect key="frame" x="70" y="119" width="334" height="45"/>
+                        <rect key="frame" x="65" y="119" width="339" height="45"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="253" text="Nom du contact" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh1-0U-UzT">
-                                <rect key="frame" x="0.0" y="0.0" width="334" height="19"/>
+                                <rect key="frame" x="0.0" y="0.0" width="339" height="19"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Prénom du contact" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWn-CS-eDv">
-                                <rect key="frame" x="0.0" y="19" width="334" height="26"/>
+                                <rect key="frame" x="0.0" y="19" width="339" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -39,7 +39,7 @@
                         </constraints>
                     </stackView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YPC-u0-ecQ">
-                        <rect key="frame" x="10" y="116.5" width="50" height="50"/>
+                        <rect key="frame" x="5" y="116.5" width="50" height="50"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="dtv-Kw-x6z"/>
@@ -69,7 +69,7 @@
                     <constraint firstItem="Q2C-Ne-X3o" firstAttribute="leading" secondItem="YPC-u0-ecQ" secondAttribute="trailing" constant="10" id="cph-TS-2hD"/>
                     <constraint firstItem="Q2C-Ne-X3o" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jQs-1r-150"/>
                     <constraint firstItem="YPC-u0-ecQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="m0h-fm-pZC"/>
-                    <constraint firstItem="YPC-u0-ecQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="oEv-ff-SsW"/>
+                    <constraint firstItem="YPC-u0-ecQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="oEv-ff-SsW"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

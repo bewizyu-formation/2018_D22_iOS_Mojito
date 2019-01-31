@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
+import FontAwesome_swift
 
 class ContactsViewController: UIViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate {
      
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var viewFilters: UIView!
     @IBOutlet weak var buttonFilterAll: UIButton!
     @IBOutlet weak var buttonFilterFamily: UIButton!
     @IBOutlet weak var buttonFilterSenior: UIButton!
@@ -25,11 +27,13 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
     var nameFilter: String?
     var profileFilter: String?
     var emergencyFilter: Int?
+    
+    var userToken: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let leftButtonIcon = UIImage.fontAwesomeIcon(name: .cog, style: .solid, textColor: .blue, size: CGSize(width: 35, height: 35))
+        let leftButtonIcon = UIImage.fontAwesomeIcon(name: .userCog, style: .solid, textColor: .blue, size: CGSize(width: 35, height: 35))
         let leftBarButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.done, target: self, action: #selector(navigateToUserSettings))
         leftBarButton.image = leftButtonIcon
         self.navigationItem.leftBarButtonItem = leftBarButton
@@ -42,7 +46,16 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
 
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableView.automaticDimension
-    
+        
+        buttonFilterFamily.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .solid)
+        buttonFilterFamily.setTitle(String.fontAwesomeIcon(name: .users), for: .normal)
+        buttonFilterSenior.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .solid)
+        buttonFilterSenior.setTitle(String.fontAwesomeIcon(name: .blind), for: .normal)
+        buttonFilterDoctor.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .solid)
+        buttonFilterDoctor.setTitle(String.fontAwesomeIcon(name: .userMd), for: .normal)
+        buttonFilterEmergency.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .solid)
+        buttonFilterEmergency.setTitle(String.fontAwesomeIcon(name: .exclamationCircle), for: .normal)
+        
         searchBar.delegate = self
         setHeaderStyle()
         
@@ -50,6 +63,24 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         tableView.delegate = self
         
         setupFetchedResultController()
+        
+        // Get connected user token
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
+        
+        let results = try? context.fetch(fetchRequest)
+        
+        guard let user = results?.first else {
+            return
+        }
+        
+        self.userToken = user.token
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,18 +103,22 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         navigationController?.pushViewController(userSettingsController, animated: true)
     }
     
-    
     // MARK: - Header style
+    
     func setHeaderStyle() {
+        self.viewFilters.backgroundColor = EasyCallStyle.colorSecondary
         self.buttonFilterAll.backgroundColor = EasyCallStyle.colorSecondary
+        self.buttonFilterAll.setTitle("TOUS", for: .normal)
         self.buttonFilterFamily.backgroundColor = EasyCallStyle.colorPrimary
         self.buttonFilterSenior.backgroundColor = EasyCallStyle.colorPrimary
         self.buttonFilterDoctor.backgroundColor = EasyCallStyle.colorPrimary
         self.buttonFilterEmergency.backgroundColor = EasyCallStyle.colorPrimary
-        self.searchBar.backgroundColor = EasyCallStyle.colorPrimary
+        self.searchBar.barTintColor = EasyCallStyle.colorPrimary
+        self.searchBar.tintColor = EasyCallStyle.colorPrimary
     }
     
     // MARK: - Header interaction methods
+    
     func setNameFilter(nameFilter: String?) {
         self.nameFilter = nameFilter
     }
@@ -124,6 +159,15 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
     }
     
     @IBAction func onTapFilter(_ sender: UIButton) {
+        UIButton.animate(withDuration: 0.2,
+             animations: {
+                sender.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        },
+             completion: { finish in
+                UIButton.animate(withDuration: 0.2, animations: {
+                    sender.transform = CGAffineTransform.identity
+                })
+        })
         switch(sender) {
         case self.buttonFilterFamily:
             self.setProfileAndEmergencyFilters(profileFilter: "FAMILLE", emergencyFilter: nil)
@@ -165,6 +209,7 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
     }
     
     // MARK: - Method to call, message and mail contact from application
+    
     func open(scheme: String) {
         if let url = URL(string: scheme) {
             if #available(iOS 10, *) {
@@ -179,41 +224,17 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         }
     }
     
-    // MARK: - Table view data source and methods
-    func setupFetchedResultController(){
-        let loader = UIViewController.displaySpinner(onView: self.view)
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<Contact>(entityName: "Contact")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true), NSSortDescriptor(key: "firstName", ascending: true)]
-        fetchRequest.predicate = self.getNSPredicate()
-        
-        let resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        resultController.delegate = self
-        
-        try? resultController.performFetch()
-        
-        self.fetchedResultController = resultController
-        UIViewController.removeSpinner(spinner: loader)
-    }
+    // MARK: - Table View
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.fetchedResultController?.sections?.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.fetchedResultController?.sections?[section].numberOfObjects ?? 0
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell", for: indexPath) as! ContactTableViewCell
-       
-        let contact = self.fetchedResultController?.object(at: indexPath)
+    
+    func configureContactCell(cell: ContactTableViewCell, withContact contact: Contact?){
         cell.labelContactFirstName?.text = contact?.firstName ?? "Prénom"
         cell.labelContactFirstName.textColor = EasyCallStyle.colorPrimary
         cell.labelContactLastName?.text = contact?.lastName ?? "Nom"
@@ -239,7 +260,14 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         cell.contactEmail = contact?.email
         
         cell.buttonPhone.setTitleColor(EasyCallStyle.colorSecondary, for: .normal)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell", for: indexPath) as! ContactTableViewCell
         
+        let contact = self.fetchedResultController?.object(at: indexPath)
+        
+        configureContactCell(cell: cell, withContact: contact)
         return cell
     }
     
@@ -247,29 +275,43 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         return 62
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailContactController = DetailContactViewController(nibName: "DetailContactViewController", bundle: nil)
-        detailContactController.contact = fetchedResultController?.object(at: indexPath)
-        navigationController?.pushViewController(detailContactController, animated: true)
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let colorPrimary = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        let colorSecondary = UIColor(red: 47/255, green: 177/255, blue: 249/255, alpha: 1)
-        
-        let smsAction = UITableViewRowAction(style: .normal, title: "SMS") { (action, indexpath) in
-            let contact = self.fetchedResultController?.object(at: indexPath)
-            self.open(scheme: "sms:\(contact?.phone ?? "phone")")
+    // MARK: - Fetched results controller
+    
+    func setupFetchedResultController(){
+        let loader = UIViewController.displaySpinner(onView: self.view)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
-        smsAction.backgroundColor = colorPrimary
         
-        let mailAction = UITableViewRowAction(style: .normal, title: "Mail") { (action, indexpath) in
-            let contact = self.fetchedResultController?.object(at: indexPath)
-            self.open(scheme: "mail:\(contact?.email ?? "mail")")
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Contact>(entityName: "Contact")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true), NSSortDescriptor(key: "firstName", ascending: true)]
+        fetchRequest.predicate = self.getNSPredicate()
+        
+        let resultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        resultController.delegate = self
+        
+        try? resultController.performFetch()
+        
+        self.fetchedResultController = resultController
+        UIViewController.removeSpinner(spinner: loader)
+    }
+    
+    func updatePredicateAndReloadData() {
+        //print(self.nameFilter, self.profileFilter, self.emergencyFilter)
+        DispatchQueue.main.async {
+            self.fetchedResultController?.fetchRequest.predicate = self.getNSPredicate()
+            self.fetchedResultController?.fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true), NSSortDescriptor(key: "firstName", ascending: true)]
+            try? self.fetchedResultController?.performFetch()
+            self.tableView.reloadData()
         }
-        mailAction.backgroundColor = colorSecondary
-        
-        return [smsAction, mailAction]
     }
     
     func synchroniseWithAPI() {
@@ -281,7 +323,8 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         let context = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true), NSSortDescriptor(key: "firstName", ascending: true)]
+        fetchRequest.predicate = self.getNSPredicate()
         
         let results = try? context.fetch(fetchRequest)
         
@@ -340,7 +383,7 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
                         foundContact.gravatar = contact["gravatar"] as? String
                         foundContact.isFamilinkUser = contact["isFamilinkUser"] as! Bool
                         foundContact.isEmergencyUser = contact["isEmergencyUser"] as! Bool
-                    // adding new contact
+                        // adding new contact
                     } else {
                         let c = Contact(context: context)
                         c.serverID = contact["_id"] as? String
@@ -363,11 +406,11 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
             UIViewController.removeSpinner(spinner: loader)
             DispatchQueue.main.async {
                 switch(error) {
-                    case ApiError.InvalidToken:
-                        self.showSimpleAlert(alertTitle: "Session expirée", alertMessage: "Veuillez vous reconnecter pour avoir de nouveau accès à vos contact.", actionTitle: "Ok")
+                case ApiError.InvalidToken:
+                    self.showSimpleAlert(alertTitle: "Session expirée", alertMessage: "Veuillez vous reconnecter pour avoir de nouveau accès à vos contact.", actionTitle: "Ok")
                     
-                    default:
-                        self.showSimpleAlert(alertTitle: "Pas de connexion internet ou serveur KO", alertMessage: "Vérifiez votre connection à Internet et essayez de vous connecter à nouveau.", actionTitle: "Ok")
+                default:
+                    self.showSimpleAlert(alertTitle: "Pas de connexion internet ou serveur KO", alertMessage: "Vérifiez votre connection à Internet et essayez de vous connecter à nouveau.", actionTitle: "Ok")
                 }
             }
             
@@ -375,21 +418,66 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         })
     }
     
+    // MARK: - Table view update and action
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailContactController = DetailContactViewController(nibName: "DetailContactViewController", bundle: nil)
+        detailContactController.contact = fetchedResultController?.object(at: indexPath)
+        navigationController?.pushViewController(detailContactController, animated: true)
+  
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Supression") { (action, indexpath) in
+            
+            let contactDeleteAlert = UIAlertController(title: "Suppression de question", message: "Que voulez-vous faire ?", preferredStyle: .alert)
+            
+            let actionDelete = UIAlertAction(title: "Supprimer", style: .destructive) { (action: UIAlertAction) in
+                
+                guard let contact = self.fetchedResultController?.object(at: indexPath) else {
+                    return
+                }
+                APIClient.instance.deleteContact(token: self.userToken, id: contact.serverID ?? "incorrectID", onSuccess: {
+                    DispatchQueue.main.async {
+                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                            return
+                        }
+                        
+                        let context = appDelegate.persistentContainer.viewContext
+                        context.delete(contact)
+                    }
+                    
+                }, onError: { (error) in
+                    DispatchQueue.main.async {
+                        switch(error) {
+                            case ApiError.BadShapeId:
+                                self.showSimpleAlert(alertTitle: "Erreur : BadShapeID", alertMessage: "Veuillez contacter les gérant de l'application.", actionTitle: "Ok")
+                            case ApiError.InvalidToken:
+                                self.showSimpleAlert(alertTitle: "Session expirée", alertMessage: "Veuillez vous reconnecter pour avoir de nouveau accès à vos contact.", actionTitle: "Ok")
+                            default:
+                                self.showSimpleAlert(alertTitle: "Pas de connexion internet ou serveur KO", alertMessage: "Vérifiez votre connection à Internet et essayez de vous connecter à nouveau.", actionTitle: "Ok")
+                        }
+                    }
+                    
+                })
+            }
+            let actionCancel = UIAlertAction(title: "Annuler", style: .default)
+            
+            contactDeleteAlert.addAction(actionCancel)
+            contactDeleteAlert.addAction(actionDelete)
+            self.present(contactDeleteAlert, animated: true, completion: nil)
+            
+        }
+        return [deleteAction]
+    }
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.reloadData()
     }
     
-    func updatePredicateAndReloadData() {
-        //print(self.nameFilter, self.profileFilter, self.emergencyFilter)
-        DispatchQueue.main.async {
-            self.fetchedResultController?.fetchRequest.predicate = self.getNSPredicate()
-            self.fetchedResultController?.fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true), NSSortDescriptor(key: "firstName", ascending: true)]
-            try? self.fetchedResultController?.performFetch()
-            self.tableView.reloadData()
-        }
-    }
-    
     // MARK: - Alert message method
+    
     func showSimpleAlert(alertTitle: String, alertMessage: String, actionTitle: String) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: actionTitle, style: UIAlertAction.Style.default, handler: nil))
