@@ -131,10 +131,6 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
             UIViewController.removeSpinner(spinner: loader)
         }, onError: { (error) in
             UIViewController.removeSpinner(spinner: loader)
-            let loadProfilesFailedAlert = UIAlertController(title: "Chargement impossible", message: "une erreur inconnue est survenue", preferredStyle: UIAlertController.Style.alert)
-            loadProfilesFailedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(loadProfilesFailedAlert, animated: true, completion: nil)
-            self.navigationController?.popViewController(animated: true)
         })
     }
     
@@ -213,14 +209,13 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     func displayAlertViewForEditButton(){
         alertValidUpdate = UIAlertController(title: "Succès", message: "Les modifications on été enregistrées.", preferredStyle: UIAlertController.Style.alert)
         alertValidUpdate.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        alertNoConnection = UIAlertController(title: "Pas de connexion", message: "Vous devez être connecté à Internet pour supprimer un contact.", preferredStyle: UIAlertController.Style.alert)
-        alertNoConnection.addAction(UIAlertAction(title: "OUI", style: .destructive) { (action:UIAlertAction) in
-            NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
-        })
+        alertNoConnection = UIAlertController(title: "Pas de connexion", message: "Vous devez être connecté à Internet pour modifier un contact.", preferredStyle: UIAlertController.Style.alert)
+        alertNoConnection.addAction(UIAlertAction(title: "OUI", style: .default))
     }
     
     
     @IBAction func onEditTap(_ sender: UIButton) {
+        
         UIButton.animate(withDuration: 0.2,
              animations: {
                 sender.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
@@ -283,9 +278,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     func displayAlertViewForDeleteButton(){
         alertConfirmDelete = UIAlertController(title: "Suppression du contact!", message: "Etes-vous sûr de vouloir supprimer le contact?", preferredStyle: UIAlertController.Style.alert)
         alertNoConnection = UIAlertController(title: "Pas de connexion", message: "Vous devez être connecté à Internet pour supprimer un contact!", preferredStyle: UIAlertController.Style.alert)
-        alertNoConnection.addAction(UIAlertAction(title: "OUI", style: .destructive) { (action:UIAlertAction) in
-            NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
-        })
+        alertNoConnection.addAction(UIAlertAction(title: "OUI", style: .default))
     }
     
     @IBAction func onDeleteTap(_ sender: Any) {

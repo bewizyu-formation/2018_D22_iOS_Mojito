@@ -77,10 +77,6 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
             UIViewController.removeSpinner(spinner: loader)
         }, onError: { (error) in
             UIViewController.removeSpinner(spinner: loader)
-            let loadProfilesFailedAlert = UIAlertController(title: "Chargement impossible", message: "une erreur inconnue est survenue", preferredStyle: UIAlertController.Style.alert)
-            loadProfilesFailedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(loadProfilesFailedAlert, animated: true, completion: nil)
-            self.navigationController?.popViewController(animated: true)
         })
     }
     

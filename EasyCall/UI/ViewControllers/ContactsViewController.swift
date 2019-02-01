@@ -395,7 +395,7 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
                     NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
                     
                 default:
-                    self.showSimpleAlert(alertTitle: "Pas de connexion internet ou serveur KO", alertMessage: "Vérifiez votre connection à Internet et essayez de vous connecter à nouveau.", actionTitle: "Ok")
+                    print("Pas de connexion")
                 }
             }
         })
