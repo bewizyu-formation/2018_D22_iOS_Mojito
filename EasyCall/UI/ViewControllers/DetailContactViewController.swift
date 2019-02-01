@@ -54,8 +54,6 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var smsButton: UIButton!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -122,14 +120,6 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         user = fetchedResultController?.object(at: indexPath)
     }
     
-    @objc func onPressedCancelButton(){
-        let alertCancelUpdate = UIAlertController(title: "Annulation", message: "Les modifications on été annulées", preferredStyle: UIAlertController.Style.alert)
-        alertCancelUpdate.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alertCancelUpdate, animated: true, completion: nil)
-        initContactValues()
-        leaveEditMode()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         let loader = UIViewController.displaySpinner(onView: self.view)
         super.viewWillAppear(animated)
@@ -168,6 +158,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         profileTextField.text = pickerData[row]
         profileTextField.resignFirstResponder()
+        self.valueSelected = profileTextField.text
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -220,11 +211,11 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
     * edit contact methods
     */
     func displayAlertViewForEditButton(){
-        alertValidUpdate = UIAlertController(title: "Succès", message: "Les modifications on été enregistrées", preferredStyle: UIAlertController.Style.alert)
+        alertValidUpdate = UIAlertController(title: "Succès", message: "Les modifications on été enregistrées.", preferredStyle: UIAlertController.Style.alert)
         alertValidUpdate.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        alertNoConnection = UIAlertController(title: "Pas de connexion", message: "Vous devez être connecté à Internet pour supprimer un contact!", preferredStyle: UIAlertController.Style.alert)
+        alertNoConnection = UIAlertController(title: "Pas de connexion", message: "Vous devez être connecté à Internet pour supprimer un contact.", preferredStyle: UIAlertController.Style.alert)
         alertNoConnection.addAction(UIAlertAction(title: "OUI", style: .destructive) { (action:UIAlertAction) in
-            self.disconnect()
+            NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
         })
     }
     
@@ -264,13 +255,14 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
             displayAlertViewForEditButton()
             if phoneNumber.count == 10 && firstName.count > 2 && lastName.count > 2 && isValidEmail(testStr: mail){
                 
-                APIClient.instance.updateContact(token: user.token!, id: contact.serverID!, phone: phoneNumber, firstName: firstName, lastName: lastName, email: mail, profile: valueSelected ?? "Famille", gravatar: contact.gravatar!, isFamilinkUser: false, isEmergencyUser: emergency, onSuccess: {
+                APIClient.instance.updateContact(token: user.token ?? "", id: contact.serverID ?? "badid", phone: phoneNumber, firstName: firstName.capitalized, lastName: lastName.capitalized, email: mail, profile: valueSelected ?? "FAMILLE", gravatar: contact.gravatar!, isFamilinkUser: false, isEmergencyUser: emergency, onSuccess: {
                     DispatchQueue.main.async {
                         self.leaveEditMode()
                         UIViewController.removeSpinner(spinner: loader)
                     }
                 }) { (Error) in
                     DispatchQueue.main.async {
+                        print(Error)
                         UIViewController.removeSpinner(spinner: loader)
                         self.present(self.alertNoConnection, animated: true, completion: nil)
                     }
@@ -292,7 +284,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         alertConfirmDelete = UIAlertController(title: "Suppression du contact!", message: "Etes-vous sûr de vouloir supprimer le contact?", preferredStyle: UIAlertController.Style.alert)
         alertNoConnection = UIAlertController(title: "Pas de connexion", message: "Vous devez être connecté à Internet pour supprimer un contact!", preferredStyle: UIAlertController.Style.alert)
         alertNoConnection.addAction(UIAlertAction(title: "OUI", style: .destructive) { (action:UIAlertAction) in
-            self.disconnect()
+            NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
         })
     }
     
@@ -300,7 +292,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         let loader = UIViewController.displaySpinner(onView: self.view)
         displayAlertViewForDeleteButton()
         alertConfirmDelete.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            APIClient.instance.deleteContact(token: self.user.token!, id: self.contact.serverID!, onSuccess: {
+            APIClient.instance.deleteContact(token: self.user.token ?? "", id: self.contact.serverID ?? "badid", onSuccess: {
                 UIViewController.removeSpinner(spinner: loader)
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
@@ -308,6 +300,7 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
             }) { (Error) in
                 UIViewController.removeSpinner(spinner: loader)
                 DispatchQueue.main.async {
+                    print(Error)
                     self.present(self.alertNoConnection, animated: true, completion: nil)
                 }
             }
@@ -445,34 +438,5 @@ class DetailContactViewController: UIViewController, UIPickerViewDelegate, UIPic
         try? resultController.performFetch()
         
         self.fetchedResultController = resultController
-    }
-    
-    /*
-    * disconnection
-    */
-    
-    func disconnect(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
-        
-        let results = try? context.fetch(fetchRequest)
-        
-        guard let users = results else {
-            return
-        }
-        
-        for user in users{
-            context.delete(user)
-        }
-        
-        try? context.save()
-        
-        NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
     }
 }

@@ -47,11 +47,11 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7o-ja-DBK">
-                        <rect key="frame" x="424" y="116.5" width="50" height="50"/>
+                        <rect key="frame" x="426" y="114" width="55" height="55"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="Phi-EN-bba"/>
-                            <constraint firstAttribute="width" constant="50" id="kIU-b2-hPS"/>
+                            <constraint firstAttribute="height" constant="55" id="Phi-EN-bba"/>
+                            <constraint firstAttribute="width" constant="55" id="kIU-b2-hPS"/>
                         </constraints>
                         <state key="normal">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,7 +63,7 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="C7o-ja-DBK" secondAttribute="trailing" constant="10" id="KMk-5W-mPi"/>
+                    <constraint firstAttribute="trailing" secondItem="C7o-ja-DBK" secondAttribute="trailing" constant="3" id="KMk-5W-mPi"/>
                     <constraint firstAttribute="trailing" secondItem="Q2C-Ne-X3o" secondAttribute="trailing" constant="80" id="Pz2-76-9T8"/>
                     <constraint firstItem="C7o-ja-DBK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Zgh-Xk-dfm"/>
                     <constraint firstItem="Q2C-Ne-X3o" firstAttribute="leading" secondItem="YPC-u0-ecQ" secondAttribute="trailing" constant="10" id="cph-TS-2hD"/>

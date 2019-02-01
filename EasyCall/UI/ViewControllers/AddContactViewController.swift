@@ -168,7 +168,7 @@ class AddContactViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     func createContact(){
         let loader = UIViewController.displaySpinner(onView: self.view)
         if !firstNameTextField.text!.isEmpty && !(lastNameTextField.text?.isEmpty)! && self.isValidEmail(testStr: emailTextField.text ?? "") && phoneTextField.text?.count == 10 {
-            APIClient.instance.createContact(token: userToken, phone: phoneTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!, profile: profileTextField.text!, gravatar: "https://www.gravatar.com/avatar/", isFamilinkUser: isEasyCallUserSwitch.isOn, isEmergencyUser: isEmergencyContactSwitch.isOn, onSuccess: { (contactInfo) in
+            APIClient.instance.createContact(token: userToken, phone: phoneTextField.text!, firstName: (firstNameTextField.text!).capitalized, lastName: (lastNameTextField.text!).capitalized, email: emailTextField.text!, profile: profileTextField.text ?? "FAMILLE", gravatar: "https://www.gravatar.com/avatar/", isFamilinkUser: isEasyCallUserSwitch.isOn, isEmergencyUser: isEmergencyContactSwitch.isOn, onSuccess: { (contactInfo) in
                 DispatchQueue.main.async {
                     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                         return

@@ -22,8 +22,8 @@ class ContactTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.imageViewGravatar.layer.cornerRadius = 5
-        buttonPhone.titleLabel?.font = UIFont.fontAwesome(ofSize: 40, style: .solid)
-        buttonPhone.setTitle(String.fontAwesomeIcon(name: .phone), for: .normal)
+        buttonPhone.titleLabel?.font = UIFont.fontAwesome(ofSize: 55, style: .solid)
+        buttonPhone.setTitle(String.fontAwesomeIcon(name: .phoneSquare), for: .normal)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

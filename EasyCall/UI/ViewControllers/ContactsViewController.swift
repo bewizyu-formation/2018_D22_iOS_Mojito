@@ -63,24 +63,6 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         tableView.delegate = self
         
         setupFetchedResultController()
-        
-        // Get connected user token
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
-        
-        let results = try? context.fetch(fetchRequest)
-        
-        guard let user = results?.first else {
-            return
-        }
-        
-        self.userToken = user.token
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -324,17 +306,19 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
         
         let fetchRequest = NSFetchRequest<User>(entityName: "User")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true), NSSortDescriptor(key: "firstName", ascending: true)]
-        fetchRequest.predicate = self.getNSPredicate()
         
         let results = try? context.fetch(fetchRequest)
         
-        guard let users = results else {
+        if let user = results?.first {
+            self.userToken = user.token ?? ""
+        } else {
+            self.showSimpleAlert(alertTitle: "Erreur d'utilisateur", alertMessage: "Utilisateur introuvabe", actionTitle: "Ok")
+            NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
+            UIViewController.removeSpinner(spinner: loader)
             return
         }
         
-        let tokenUser = users[0].token ?? ""
-        
-        APIClient.instance.getContacts(token: tokenUser, onSuccess: { (contacts) in
+        APIClient.instance.getContacts(token: self.userToken, onSuccess: { (contacts) in
             DispatchQueue.main.async {
                 
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -375,8 +359,8 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
                     // Updatading found countact
                     if let foundContact = foundContact {
                         foundContact.serverID = contact["_id"] as? String
-                        foundContact.firstName = contact["firstName"] as? String
-                        foundContact.lastName = contact["lastName"] as? String
+                        foundContact.firstName = (contact["firstName"] as? String)?.capitalized
+                        foundContact.lastName = (contact["lastName"] as? String)?.capitalized
                         foundContact.phone = contact["phone"] as? String
                         foundContact.profile = contact["profile"] as? String
                         foundContact.email = contact["email"] as? String
@@ -387,8 +371,8 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
                     } else {
                         let c = Contact(context: context)
                         c.serverID = contact["_id"] as? String
-                        c.firstName = contact["firstName"] as? String
-                        c.lastName = contact["lastName"] as? String
+                        c.firstName = (contact["firstName"] as? String)?.capitalized
+                        c.lastName = (contact["lastName"] as? String)?.capitalized
                         c.phone = contact["phone"] as? String
                         c.profile = contact["profile"] as? String
                         c.email = contact["email"] as? String
@@ -403,18 +387,17 @@ class ContactsViewController: UIViewController, NSFetchedResultsControllerDelega
                 UIViewController.removeSpinner(spinner: loader)
             }
         }, onError: { (error) in
-            UIViewController.removeSpinner(spinner: loader)
             DispatchQueue.main.async {
+                UIViewController.removeSpinner(spinner: loader)
                 switch(error) {
                 case ApiError.InvalidToken:
                     self.showSimpleAlert(alertTitle: "Session expirée", alertMessage: "Veuillez vous reconnecter pour avoir de nouveau accès à vos contact.", actionTitle: "Ok")
+                    NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
                     
                 default:
                     self.showSimpleAlert(alertTitle: "Pas de connexion internet ou serveur KO", alertMessage: "Vérifiez votre connection à Internet et essayez de vous connecter à nouveau.", actionTitle: "Ok")
                 }
             }
-            
-            NotificationCenter.default.post(name: NSNotification.Name("UserLoggedOut"), object: nil)
         })
     }
     

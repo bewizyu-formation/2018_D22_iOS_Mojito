@@ -37,8 +37,8 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPR-3W-Pth">
                     <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-Sf-15b">
-                            <rect key="frame" x="15" y="0.0" width="290" height="502.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-Sf-15b">
+                            <rect key="frame" x="15" y="15" width="290" height="522.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9kl-H5-2Eq">
                                     <rect key="frame" x="0.0" y="0.0" width="290" height="457.5"/>
@@ -169,7 +169,7 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jj4-B4-xDc">
-                                    <rect key="frame" x="0.0" y="457.5" width="290" height="45"/>
+                                    <rect key="frame" x="0.0" y="477.5" width="290" height="45"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4B-BV-OFH">
                                             <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
@@ -198,7 +198,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="fRI-Sf-15b" firstAttribute="leading" secondItem="fPR-3W-Pth" secondAttribute="leading" id="86H-7M-ogT"/>
-                        <constraint firstItem="fRI-Sf-15b" firstAttribute="top" secondItem="fPR-3W-Pth" secondAttribute="top" id="Hny-cl-qu0"/>
+                        <constraint firstItem="fRI-Sf-15b" firstAttribute="top" secondItem="fPR-3W-Pth" secondAttribute="top" constant="15" id="Hny-cl-qu0"/>
                         <constraint firstAttribute="trailing" secondItem="fRI-Sf-15b" secondAttribute="trailing" id="Pru-v9-Ejc"/>
                         <constraint firstAttribute="bottom" secondItem="fRI-Sf-15b" secondAttribute="bottom" constant="15" id="i4L-dJ-7V4"/>
                     </constraints>

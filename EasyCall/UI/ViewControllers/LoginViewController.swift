@@ -47,6 +47,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    open override func viewWillAppear(_ animated: Bool) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true), NSSortDescriptor(key: "firstName", ascending: true)]
+        
+        let results = try? context.fetch(fetchRequest)
+        
+        if let user = results?.first {
+            self.phoneTextField.text = user.phone
+        }
+    }
+    
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name:UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
@@ -103,13 +120,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signInTouch(_ sender: Any) {
+        phoneTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
         let loader = UIViewController.displaySpinner(onView: self.view)
         if phoneTextField.text?.count == 10 && passwordTextField.text?.count == 4 {
             
             APIClient.instance.login(phone: self.phoneTextField.text!, password: self.passwordTextField.text!, onSuccess: { (token) in
                 APIClient.instance.getCurrentUser(token: token, onSuccess: { (userInfo) in
                     DispatchQueue.main.async {
-                        
+                        self.passwordTextField.text = ""
                         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                             return
                         }
@@ -124,6 +144,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         guard let users = results else {
                             return
                         }
+                        
+                        print ("##### Users to delete ", users.count)
                         
                         for user in users{
                             context.delete(user)
@@ -142,10 +164,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         try? context.save()
                         
-                        UIViewController.removeSpinner(spinner: loader)
+                        self.navigationController?.popViewController(animated: true)
                         NotificationCenter.default.post(name: NSNotification.Name("UserLoggedIn"), object: nil)
+                        UIViewController.removeSpinner(spinner: loader)
                     }
                 }, onError: { (error) in
+                    self.passwordTextField.text = ""
                     UIViewController.removeSpinner(spinner: loader)
                     guard let error = error as? ApiError else {
                         return
@@ -167,6 +191,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 
             }) { (error) in
+                self.passwordTextField.text = ""
                 UIViewController.removeSpinner(spinner: loader)
                 DispatchQueue.main.async{
                         let alertController = UIAlertController(title: "Erreur de connexion", message: "Numéro de téléphone ou mot de passe incorrect", preferredStyle: .alert)
@@ -187,16 +212,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signUpTouch(_ sender: Any) {
         
-         let vc = CreateAccountViewController(
-         nibName: "CreateAccountViewController",
-         bundle: nil)
+         let vc = CreateAccountViewController(nibName: "CreateAccountViewController", bundle: nil)
          navigationController?.pushViewController(vc,
          animated: true)
     }
     
     @IBAction func forgotPasswordTouch(_ sender: Any) {
         
-        let alertForgotPassword = UIAlertController(title: "Problème de mémoire ?", message: "IL NE FAUT JAMAIS OUBLIER SON MOT DE PASSE !", preferredStyle: .alert)
+        let alertForgotPassword = UIAlertController(title: "Feature à venir", message: "Nous mettons tout en oeuvre pour rajouter cette fonctionnalité.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default ){ action in
             self.dismiss(animated: true, completion: nil)
         }
